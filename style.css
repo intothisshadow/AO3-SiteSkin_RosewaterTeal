@@ -13,6 +13,7 @@ CODE & INSTRUCTIONS:
 - Instructions (AO3):  
 
 FONTS:
+
 - This theme uses GoudyBookletter1911-Regular.ttf. You can download it from the "fonts" folder, or https://fonts.google.com/specimen/Goudy+Bookletter+1911), or use a Stylus to import/embed it from Google Fonts.
 
 CREDITS:
@@ -864,6 +865,20 @@ dd fieldset {
     color: #2b1f1f;
     margin: 0.8em 0 !important;
 }
+
+/* ---  Rich text (TinyMCE) editor's button background --- */
+
+.tox .tox-tbtn {
+    background: #fff !important;
+    border: 4px solid #7eacb5 !important;;
+}
+
+.tox .tox-tbtn:hover {
+    background: #fff !important;
+    border: 4px solid #bf4646 !important;;
+}
+
+/* --- Footer ---*/
 
 #footer,
 #footer button {
