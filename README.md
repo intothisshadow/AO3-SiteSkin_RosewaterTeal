@@ -39,6 +39,6 @@ https://github.com/ZerafinaCSS/ | https://archiveofourown.org/works/57331222
 # SCREENSHOTS
 
 ![image](https://github.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/blob/main/images/screenshot1.jpg)
-![image](https://github.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/blob/main/images/screenshot1.jpg)
+![image](https://github.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/blob/main/images/screenshot2.jpg)
 
 
