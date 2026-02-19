@@ -31,16 +31,14 @@ Head over to the GitHub repository and copy the provided code from **style.css**
 
 # CREDITS
 
-AO3 logo upgrade and colorization code by by ZerafinaCSS, (Zerafina)
+AO3 logo upgrade and colorization code (found in "Replace the AO3 Icons 2.0 [Site Skin]") by ZerafinaCSS, (Zerafina)
 https://github.com/ZerafinaCSS/ | https://archiveofourown.org/works/57331222
 
 
 
 # SCREENSHOTS
 
-![image](https://github.com/intothisshadow/AO3-SiteSkin_PastelWhimsy/blob/main/images/screenshot1.jpg)
-![image](https://github.com/intothisshadow/AO3-SiteSkin_PastelWhimsy/blob/main/images/screenshot2.jpg)
-![image](https://github.com/intothisshadow/AO3-SiteSkin_PastelWhimsy/blob/main/images/screenshot3.jpg)
-![image](https://github.com/intothisshadow/AO3-SiteSkin_PastelWhimsy/blob/main/images/screenshot4.jpg)
-![image](https://github.com/intothisshadow/AO3-SiteSkin_PastelWhimsy/blob/main/images/screenshot5.jpg)
+![image](https://github.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/blob/main/images/screenshot1.jpg)
+![image](https://github.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/blob/main/images/screenshot1.jpg)
+
 
