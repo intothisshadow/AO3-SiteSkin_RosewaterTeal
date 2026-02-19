@@ -1,0 +1,870 @@
+/* --- AO3 SKIN: Rosewater Teal --- */
+/* Palette:
+   #bf4646 (Crimson Red)
+   #7eacb5 (Signature Teal)
+   #fff4ea (Pale Cream Parchment)
+   #eddcc6 (Aged Beige)
+   #8b2626 (Deep Oxblood for accents)
+   background: #BF4646;
+   background: linear-gradient(90deg, #BF4646, #7EADB5); (crimson to teal gradient)
+   background: #BF4646;
+   background: linear-gradient(225deg, #BF4646, #7EADB5); (crimson to teal gradient - to the other direction)
+   background: #ECD0AD;
+   background: linear-gradient(90deg, #ECD0AD, #7EADB5); (cream yellow to teal gradient)
+*/
+
+
+/* ============================================================
+   1. GLOBAL STRUCTURE & FONTS
+   ============================================================ */
+
+/* Sets the main site background to the Teal Gradient */
+body,
+#outer.margin,
+#inner.margin,
+.home.index,
+#main,
+#outer-page-wrapper {
+    background: linear-gradient(to bottom, #7eacb5 0%, #6a949d 100%) !important;
+    background-attachment: fixed !important;
+    background-color: #7eacb5 !important;
+    color: #2b1f1f;
+    min-height: 100vh;
+}
+
+pre {
+    background-color: #fff4ea !important;
+    border-radius: 18px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+    color: #2b1f1f;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Helvetica, sans-serif, 'GNU Unifont' !important;
+    line-height: 1.45 !important;
+    margin: 60px auto !important;
+    padding: 60px 55px !important;
+}
+
+/* -- ao3 logo upgrade and colorization code by zerafinacss -- */
+#header .logo {
+    content: url("/images/logo.png"); /* this replaces the logo with a higher quality version */
+    filter: brightness(0) saturate(100%) invert(92%) sepia(16%) saturate(357%) hue-rotate(341deg) brightness(95%) contrast(94%); /* adjust filter values to change color */
+}
+
+/* Base typography for headers */
+h1 { font-size: 1.6em; }
+h2 { font-size: 1.35em; }
+h3 { font-size: 1.2em; }
+
+/* --- GLOBAL TYPOGRAPHY --- */
+
+a {
+    border-bottom: 2px solid rgba(166, 52, 52, 0.35);
+    color: #a63434; /* Deep Crimson */
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+/* Strong hover contrast */
+a:hover {
+    border-bottom-color: #3f8f9a;
+    color: #3f8f9a; /* Deep Teal */
+}
+
+/* Visited — clearly different */
+a:visited {
+    border-bottom-color: rgba(94, 28, 28, 0.4);
+    color: #5e1c1c; /* Dark Wine */
+}
+
+/* Active click */
+a:active {
+    color: #1f5f68; /* Deep Teal-Blue */
+}
+
+
+/* --- HEADERS (H1 - H3) --- */
+
+/* HEADING DECORATION — THEMED */
+
+/* Base heading style */
+h1,
+h2,
+h3,
+.splash .module h2,
+.splash .module h3 {
+    color: #8b2626; /* deep oxblood */
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    position: relative;
+}
+
+/* Decorative underline */
+h2:after,
+.splash .module h2:after,
+.splash .module h3:after {
+    background: linear-gradient(90deg, #bf4646, #7eacb5);
+    border-radius: 2px;
+    content: "";
+    display: block;
+    height: 3px;
+    margin-top: .35em;
+    width: 3em;
+}
+
+h4 {
+    color: #8b2626; /* deep oxblood */
+    font-size: large !important;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    position: relative;
+    text-align: center;
+}
+
+.system .userstuff,
+.news .userstuff {
+    background-color: #fff4ea !important;
+    border-radius: 18px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+    line-height: 1.85 !important;
+    padding-bottom: 30px !important;
+    padding-left: 10px !important;
+    padding-right: 0px !important;
+    padding-top: 30px !important;
+}
+
+
+/* ============================================================
+   2. HEADER & NAVIGATION
+   ============================================================ */
+
+#header {
+    background: linear-gradient(to bottom, #bf4646 0%, #a33535 100%) !important;
+    border-bottom: 3px solid #eddcc6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+#header .primary,
+#header .search {
+    background: #BF4646 !important;
+    background: linear-gradient(90deg, #BF4646, #7EADB5) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+#header .heading a,
+#header .primary a,
+#header .primary .dropdown-toggle {
+    color: #fff4ea !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+/* Nav Dropdown Menus */
+#header .menu,
+#small_login,
+#greeting .menu {
+    background: #7eacb5 !important;
+    background-image: linear-gradient(to bottom, rgba(126, 172, 181, 0.98) 0%, rgba(106, 148, 157, 0.98) 100%) !important;
+    border: 1px solid #eddcc6 !important;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+}
+
+#header .dropdown .menu a,
+#greeting .menu li a {
+    color: #fff4ea !important;
+}
+
+#header .dropdown .menu a:hover,
+#greeting .menu li a:hover {
+    background: rgba(191, 70, 70, 0.9) !important;
+    color: #ffffff !important;
+}
+
+/* The User Greeting (Hi, Username!) */
+#greeting {
+    background: linear-gradient(to bottom, #7eacb5 0%, #5e8a93 100%) !important;
+    border-bottom: 2px solid #8b2626 !important;
+    border-radius: 0 0 8px 8px;
+    color: #fff4ea !important;
+    padding: 0.5em 1em !important;
+}
+
+#greeting .user a {
+    color: #fff4ea !important;
+}
+
+/* ============================================================
+ 2 . SPLASH - FRONT PAGE                                         *
+ ============================================================ */
+
+/* "favorite" tag */
+
+.splash .favorite li a.tag {
+    font-size: 1.3em !important;
+    padding: 2px;
+}
+
+/* Styles every other "favorite" tag on the splash page with a distinct look */
+
+.splash .favorite li:nth-of-type(2n+1) a {
+    background: linear-gradient(90deg, #BF4646, #7EADB5);
+    color: #fff !important;
+    margin: 5px 5px;
+}
+
+.splash .favorite li:nth-of-type(2n+2) a {
+    background: linear-gradient(90deg, #ECD0AD, #7EADB5);
+    color: #fff !important;
+    margin: 5px 5px;
+}
+
+/* Styles the hover state for all favorite tags on the splash page */
+
+.splash .favorite li:nth-of-type(2n+1) a:hover,
+.splash .favorite li:nth-of-type(2n+2) a:hover {
+    background: linear-gradient(225deg, #BF4646, #7EADB5);
+    color: #fff !important;
+    padding: 1em 2em 2em;
+}
+
+/* ---- SPLASH FRONT PAGE INBOX --*/
+.abbreviated .icon {
+    display: none !important;
+}
+
+.abbreviated .comment h4.byline {
+    margin-bottom: 0.71em;
+    margin-left: 0px;
+    padding: 0.35em 0.16em;
+}
+
+.comment .userstuff {
+    margin-top: 1.6em;
+}
+
+.datetime {
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Helvetica, sans-serif, 'GNU Unifont' !important;
+    font-size: small !important;
+    padding-top: 1em;
+}
+
+/* ============================================================
+   4. DASHBOARD (SIDEBAR NAVIGATION)
+   ============================================================ */
+
+/* Base Dashboard Container (When viewing your own profile) */
+#dashboard.own {
+    background-color: #7eacb5 !important;
+    border-bottom: 2px solid #7eacb5 !important;
+    border-top: 2px solid #7eacb5 !important;
+    font-size: 1.1em !important;
+    letter-spacing: 1px !important;
+    padding: 15px 0 !important;
+    text-transform: uppercase !important; /* Optional: Makes links look like a clean menu */
+}
+
+/* Dashboard Link Colors */
+#dashboard a,
+#dashboard.own a,
+#dashboard.own span {
+    color: #fff4ea !important; /* Cream text */
+    font-family: 'Goudy Bookletter 1911', serif !important;
+}
+
+/* Flashy Hover Effect */
+#dashboard a:hover {
+    background: linear-gradient(90deg, #8b2626 0%, #bf4646 100%) !important;
+    border-radius: 4px !important;
+    color: #fff4ea !important;
+    transform: scale(1.05) !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+.listbox .index {
+    background-color: #eddcc6 !important;
+}
+
+/* ---- Profile page ---- */
+
+.listbox,
+fieldset,
+fieldset dl dl,
+fieldset fieldset fieldset,
+fieldset fieldset dl dl,
+dd.hideme,
+form blockquote.userstuff,
+.dynamic form {
+    background: linear-gradient(315deg, #bf4646 0%, #d88a8a 35%, #a9c9cf 70%, #7eacb5 100%);
+    border: 1px solid #cbb49a;
+    border-left: 6px solid #7eacb5;
+    border-radius: 14px;
+    box-shadow: 0 6px 16px rgba(120,80,80,.15);
+}
+
+/* READING HISTORY */
+
+/* Highlight for works you've viewed */
+.reading h4.viewed {
+    background: linear-gradient(90deg, #e6f3f5 0%, #fff4ea 60%, #eddcc6 100%);
+    border-left: 5px solid #7eacb5;
+    border-radius: 6px;
+    color: #4a3f5c;
+    font-size: small !important;
+    padding: 0.25em 0.4em;
+}
+
+
+/* ============================================================
+   5. WORK CARDS & SEARCH RESULTS
+   ============================================================ */
+
+li.blurb,
+li.work,
+li.external,
+.userstuff.summary,
+.splash .news li {
+    background: linear-gradient(to bottom, #fff4ea 0%, #eddcc6 100%) !important;
+    border-bottom: 2px solid #bf4646 !important;
+    border-left: 8px solid #7eacb5 !important;
+    border-radius: 4px 12px 4px 12px;
+    box-shadow: 6px 6px 0px rgba(126, 172, 181, 0.2), 10px 10px 20px rgba(0,0,0,0.1);
+    margin-bottom: 2em !important;
+    padding: 20px !important;
+}
+
+/* --- WORK METADATA BOX (STATIONERY CARD STYLE) --- */
+dl.meta {
+    /* Soft parchment radial gradient using your palette */
+    background: radial-gradient(circle, #fff4ea 0%, #eddcc6 60%, #cbb49a 100%) !important;
+
+    /* Double-line border effect using Teal and Cream */
+    border: 4px solid #7eacb5 !important;
+    border-radius: 10px;
+
+    /* Adding a slight inset shadow to make the metadata feel recessed */
+    box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.05);
+    margin: 20px 0 !important;
+    outline: 1px solid #fff4ea; /* Inner 'shine' line */
+    padding: 15px !important;
+}
+
+/* Metadata Labels (Rating, Category, Fandom, etc.) */
+dl.meta dt {
+    color: #bf4646 !important; /* Crimson for labels */
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Metadata Values */
+dl.meta dd {
+    color: #2b1f1f !important;
+    margin-bottom: 5px;
+}
+
+.blurb .heading {
+    text-align: left;
+}
+
+.blurb .heading a {
+    color: #8b2626 !important;
+    margin-top: 0.6em !important;
+    text-align: left;
+}
+
+.blurb .stats dt,
+.blurb .stats dd {
+    color: #3d6a73 !important;
+}
+
+/* Fix for index pages: prevent title from hitting symbols */
+.blurb .title {
+    margin-left: 60px !important;
+}
+
+
+/* ============================================================
+   6. TAG STYLING
+   ============================================================ */
+
+/* Common Tag Shape & Wrap Fixes */
+a.tag {
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: inline-block !important;
+    font-size: 12px !important;
+    padding: 2px 8px !important;
+    white-space: nowrap;
+}
+
+/* Fixes for tag list wrapping and display */
+/* Style tag items */
+#workskin .tags li::after {
+    display: inline-block;
+    line-height: 1.6;
+    margin: 0 .15em .3em 0;
+    max-width: 100%;
+}
+
+/* Remove commas */
+.tags li::after {
+    content: "" !important;
+}
+
+/* --- TAGS --- */
+/* mobile phone adjustments for tags */
+
+.fandom a.tag,
+.fandoms a.tag,
+.work .fandom a.tag,
+.relationships .tag,
+.work .relationships a.tag,
+dl.meta dd.relationship a.tag,
+.character .tag,
+.work .character a.tag,
+dl.meta dd.character a.tag,
+.characters .tag,
+.work .characters a.tag,
+.rating .tag,
+.work .rating a.tag,
+dl.meta dd.rating a.tag,
+.warnings a.tag,
+dl.meta dd.warnings a.tag,
+.warning a.tag,
+dl.meta dd.warning a.tag,
+.freeform .tag,
+.work .freeform a.tag,
+.freeforms .tag,
+.work .freeforms a.tag {
+    display: inline-block;   /* keeps it like a tag */
+    max-width: 45vw;         /* 45% of viewport width, adjust if needed */
+    word-wrap: break-word;   /* breaks very long names */
+    white-space: normal;     /* allows wrapping to next line */
+}
+
+/* --- 1. FANDOM TAGS --- */
+.fandom a.tag,
+.fandoms a.tag,
+.work .fandom a.tag {
+    background: linear-gradient(135deg, #7eacb5, #6a949d) !important;
+    color: #fff4ea !important;
+    margin: 0 .15em .3em 0;
+    transition: all 0.2s ease-in-out !important;
+}
+
+/* Fandom Hover */
+.work .fandom a.tag:hover,
+.work .fandoms a.tag:hover,
+.fandoms.heading a:hover {
+    background: linear-gradient(135deg, #bf4646, #a33535) !important;
+    border-color: #eddcc6 !important;
+    box-shadow: 0 2px 4px rgba(191, 70, 70, 0.2) !important;
+    color: #ffffff !important;
+    margin: 0 .15em .3em 0;
+}
+
+/* Hide Fandom Commas */
+.work .fandom.heading,
+.fandoms.heading { color: transparent !important; font-size: 0 !important; }
+
+.work .fandom.heading li::after,
+.fandoms.heading li::after { content: "" !important; display: none !important; }
+
+/* --- 2. RELATIONSHIP TAGS --- */
+.relationships .tag,
+.work .relationships a.tag,
+dl.meta dd.relationship a.tag {
+    background: linear-gradient(135deg, #bf4646, #a33535) !important;
+    color: #fff4ea !important;
+    margin: 0 .15em .3em 0 !important;
+}
+
+/* Relationship Hover */
+.relationships a.tag:hover,
+.work .relationships a.tag:hover,
+dl.meta dd.relationship a.tag:hover {
+    background: linear-gradient(135deg, #8b2626, #bf4646) !important;
+    box-shadow: 0 2px 4px rgba(139, 38, 38, 0.3) !important;
+    color: #ffffff !important;
+}
+
+/* --- 3. CHARACTER TAGS --- */
+.character .tag,
+.work .character a.tag,
+dl.meta dd.character a.tag,
+.characters .tag,
+.work .characters a.tag {
+    background: #7eacb5 !important;
+    color: #fff4ea !important;
+    margin: 0 .15em .3em 0 !important;
+}
+
+/* Character Hover */
+.characters a.tag:hover,
+.work .characters a.tag:hover,
+.character a.tag:hover,
+dl.meta dd.character a.tag:hover {
+    background: linear-gradient(135deg, #7eacb5, #5e8a93) !important;
+    box-shadow: 0 2px 4px rgba(126, 172, 181, 0.3) !important;
+    color: #fff4ea !important;
+}
+
+/* --- 4. FREEFORM / ADDITIONAL TAGS --- */
+.freeform .tag,
+.work .freeform a.tag,
+.freeforms .tag,
+.work .freeforms a.tag {
+    background: #eddcc6 !important;
+    border-bottom: 1px solid #cbb49a;
+    border-left: 1px solid #cbb49a;
+    border-radius: 0 0 4px 4px;
+    border-right: 1px solid #cbb49a;
+    border-top: 3px solid #bf4646 !important;
+    color: #2b1f1f !important;
+    font-size: 10px !important;
+    font-weight: bold;
+    margin: 0 4px 6px 0 !important;
+    padding: 3px 8px 2px 8px !important;
+}
+
+/* Freeform Hover */
+.freeforms a.tag:hover,
+.work .freeforms a.tag:hover,
+dl.meta dd.freeform a.tag:hover {
+    background: linear-gradient(135deg, #7eacb5, #5e8a93) !important;
+    border-top-color: #fff4ea !important;
+    box-shadow: 0 2px 4px rgba(126, 172, 181, 0.3) !important;
+    color: #fff4ea !important;
+}
+
+/* --- 5. RATINGS & WARNINGS (STATIONERY STYLE) --- */
+.rating .tag,
+.work .rating a.tag,
+dl.meta dd.rating a.tag,
+.warnings a.tag,
+dl.meta dd.warnings a.tag,
+.warning a.tag,
+dl.meta dd.warning a.tag {
+    background: #fff4ea !important;
+    border: 1px solid #cbb49a;
+    border-left: 4px solid #7eacb5 !important; /* Default Teal */
+    color: #2b1f1f !important;
+    font-size: 11px !important;
+    font-weight: bold;
+    margin: 0 .15em .3em 0 !important;
+    padding: 1px 8px 1px 6px !important;
+    text-transform: uppercase;
+}
+
+/* Rating/Warning Hovers */
+.work .rating a.tag:hover,
+.work .warning a.tag:hover,
+dl.meta dd.warning a.tag:hover,
+dl.meta dd.rating a.tag:hover {
+    background: #eddcc6 !important;
+    border-left-color: #bf4646 !important;
+    color: #bf4646 !important;
+}
+
+/* Rating Specific Colors */
+.rating-explicit .tag,
+.rating-explicit a.tag,
+.rating-mature .tag,
+.rating-mature a.tag,
+.warnings a.tag { border-left-color: #bf4646 !important; }
+
+a.tag[href*="none_apply"] { border-left-color: #7eacb5 !important; }
+
+
+/* ============================================================
+   7. THE WORK/CHAPTER VIEW (THE MANUSCRIPT)
+   ============================================================ */
+
+/* WORKSKIN BASE */
+#workskin {
+    font-variant-ligatures: common-ligatures;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(90deg, #ECD0AD, #7EADB5);
+    border-radius: 18px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+    box-sizing: border-box;
+    font-size: 1.1em; /* change story font size here */
+    margin: 0 auto;
+    max-width: 95%;
+    padding: 2% 4%;
+}
+
+/* Body text */
+#workskin .userstuff {
+    background-color: #fff4ea !important;
+    border-radius: 18px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+    box-sizing: border-box;
+    color: #2c1b18 !important;
+    font-family: 'Goudy Bookletter 1911', serif !important;
+    letter-spacing: 0.01em !important;
+    line-height: 1.85 !important;
+    line-height: 1.85 !important;
+    margin: 3em auto !important;
+    max-width: 100%;
+    padding: 2em 4% !important;
+}
+
+/* Headings */
+#workskin h1 {
+    font-size: 2em !important;
+    line-height: 1.2;
+}
+
+#workskin h2 {
+    font-size: 1.65em !important;
+    line-height: 1.25;
+}
+
+#workskin h3 {
+    font-size: 1.35em !important;
+    line-height: 1.3;
+}
+
+#workskin h4 {
+    font-size: 1.15em !important;
+}
+
+/* Prevent overflow on small screens */
+#workskin h1,
+#workskin h2,
+#workskin h3 {
+    word-wrap: break-word;
+}
+
+/* NOTES + SUMMARY */
+#workskin .preface,
+#workskin .notes {
+    background-color: #fff4ea !important;
+    border-radius: 18px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+    box-sizing: border-box;
+    margin: 2em auto !important;
+    padding: 1.5em 4% !important;
+}
+
+/* CHAPTER NUMBERS/TITLES */
+#workskin h2.heading {
+    color: #8b2626 !important;
+    font-family: 'Goudy Bookletter 1911', serif !important;
+    font-size: 1.8em !important;
+    font-style: italic;
+    font-weight: normal !important;
+    margin-bottom: 2em !important;
+    text-align: center;
+}
+
+/* SUBHEADERS WITHIN STORY */
+#workskin .userstuff h3 {
+    color: #7eacb5 !important;
+    font-family: 'Goudy Bookletter 1911', serif !important;
+    font-size: 1.1em !important;
+    letter-spacing: 2px;
+    margin-top: 2em !important;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* DROP CAP */
+#workskin .userstuff > p:first-of-type::first-letter {
+    color: #8b2626;
+    float: left;
+    font-family: 'Goudy Bookletter 1911', serif !important;
+    font-size: 3em;
+    line-height: 0.8;
+    margin-right: 0.1em;
+    margin-top: 0.1em;
+}
+
+/* FIRST LINE EMPHASIS */
+#workskin .userstuff > p:first-of-type::first-line {
+    font-variant: small-caps;
+    letter-spacing: 1px;
+}
+
+/* ALIGN SUMMARY/NOTES LABELS LEFT */
+.preface .summary .heading,
+.preface .notes .heading,
+.appendix .notes .heading {
+    text-align: left !important;
+    width: 100% !important;
+}
+
+/* CHAPTER TITLE */
+#workskin .chapter .title,
+#workskin .title {
+    color: #bf4646 !important;
+    font-family: 'Goudy Bookletter 1911', serif !important;
+    font-size: 2em !important;
+    font-weight: normal !important;
+    letter-spacing: 0.04em;
+    margin: 0.5em 0 1.5em 0 !important;
+    text-align: center !important;
+    text-shadow: 0 1px 0 rgba(255,244,234,0.6);
+}
+
+#workskin .chapter .title::after,
+#workskin .title::after {
+    border-bottom: 1px solid rgba(126, 172, 181, 0.45) !important;
+    color: #7eacb5 !important;
+    content: "";
+    display: block !important;
+    font-size: 0.9em !important;
+    margin: 1em auto 2em auto !important;
+    width: 60%; /* relative width works on all screens */
+}
+
+/* NOTES BLOCKQUOTE */
+#workskin .notes blockquote,
+#workskin .preface blockquote {
+    background: none !important;
+    border-left: 1px solid rgba(0,0,0,0.15) !important;
+    margin: 0.8em 0 !important;
+    padding-left: 0.8em !important;
+}
+
+/* COMMENT STYLES */
+
+/* Comments */
+div.comment,
+li.comment {
+    background: linear-gradient(to bottom, #fff4ea 0%, #eddcc6 100%) !important;
+    border-bottom: 2px solid #bf4646 !important;
+    border-left: 8px solid #7eacb5 !important;
+    border-radius: 4px 12px 4px 12px;
+    box-shadow: 6px 6px 0px rgba(126, 172, 181, 0.2), 10px 10px 20px rgba(0,0,0,0.1);
+    margin-bottom: 2em !important;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 20px !important;
+}
+
+/* Alternating (odd) comments — manuscript style */
+.thread .odd {
+    background-color: transparent;
+    border-left: 4px solid #bf4646 !important;
+    border-radius: 8px;
+    margin: 0;
+}
+
+/* Comment user icon - Decorative accent under */
+.comment div.icon {
+    background: linear-gradient(180deg, #fff4ea 0%, #e6f3f5 100%);
+    border-bottom: 5px solid #bf4646;
+    border-radius: 6px;
+    float: left;
+    margin: 0.2em 0.6em inherit 0;
+    width: 100px;
+}
+
+.comment h4.byline {
+    background: linear-gradient(90deg, #eddcc6 0%, #fff4ea 60%, #e6f3f5 100%);
+    border-bottom: 1px solid #7eacb5;
+    color: #8b2626;
+    margin-bottom: -0.90em;
+    margin-left: 100px;
+    padding: 0.35em 0.16em;
+    text-shadow: 0 1px 0 rgba(255,244,234,0.6);
+}
+
+/* ============================================================
+   8. BUTTONS & FOOTER
+   ============================================================ */
+
+li.module.action,
+button,
+.action,
+input[type="submit"] {
+    background: linear-gradient(to bottom, #bf4646 0%, #a33535 100%) !important;
+    border: 1px solid #eddcc6 !important;
+    border-radius: 5px;
+    color: #fff4ea !important;
+}
+
+li.module.action:hover,
+button:hover {
+    background: #7eacb5 !important;
+}
+
+/* 1. Main Form Containers & Blockquotes */
+fieldset,
+form dl,
+fieldset dl dl,
+fieldset fieldset fieldset,
+fieldset fieldset dl dl,
+dd.hideme,
+form blockquote.userstuff {
+    background: #fff4ea !important; /* Your Pale Cream base */
+    border: 1px solid #cbb49a !important; /* Subtle aged paper edge */
+    border-left: 6px solid #7eacb5 !important; /* The signature Teal Spine */
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05) !important; /* Soft lift instead of dark inset */
+    display: block;
+    margin: 0.643em;
+}
+
+/* 2. Transparent Overrides (Clearing the default AO3 clutter) */
+fieldset dl,
+fieldset.actions,
+fieldset dl fieldset dl {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    clear: right;
+}
+
+/* 3. Nested Fieldsets (The "Inner Slip" Effect) */
+fieldset fieldset,
+fieldset dl dl,
+form blockquote.userstuff {
+    background: #fdfaf2 !important; /* Your ultra-clean white parchment */
+    border: 1px dashed #cbb49a !important; /* Distinguishes internal sections */
+    clear: right;
+    margin: 0.5em 0 !important;
+    padding: 0.8em !important;
+}
+
+/* 4. Spacing for Metadata & Descriptions */
+fieldset dd dl,
+form .meta dd,
+fieldset dl fieldset dl,
+dd fieldset {
+    color: #2b1f1f;
+    margin: 0.8em 0 !important;
+}
+
+#footer,
+#footer button {
+    background: linear-gradient(to bottom, #508792 0%, #6a949d 100%) !important;
+    background-color: #7eacb5 !important;
+    color: #eddcc6;
+}
+
+/*  --- #footer button and .actions li button styles the Customize column in the footer. Whole css: .actions li a, .actions li button, .actions li input, .actions li input[type="submit"], .actions li .current, .actions li label --  */
+
+.actions li button {
+    border-style: none !important;
+}
+
+#footer a { color: #fff4ea; }
+
+#footer a:hover {
+    color: #7eacb5;
+}
+
+
+/* ============================================================
+   9. UTILITY: OVERFLOW FIXES
+   ============================================================ */
+
+#main,
+#wrapper {
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
