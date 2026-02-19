@@ -29,6 +29,11 @@ Head over to the GitHub repository and copy the provided code from **style.css**
 · Scroll to the bottom of the page and click **Submit**. You will be taken to a preview page showing your new skin details.  
 · Click the **Use** button. Your new skin is now active and will be visible on any device whenever you are logged in.
 
+
+# FONTS
+
+GoudyBookletter1911-Regular.ttf needs to be installed on your device (available to download from the "fonts" folder, or https://fonts.google.com/specimen/Goudy+Bookletter+1911), or use a Stylus to import/embed it from Google Fonts.
+
 # CREDITS
 
 AO3 logo upgrade and colorization code (found in "Replace the AO3 Icons 2.0 [Site Skin]") by ZerafinaCSS, (Zerafina)
