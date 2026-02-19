@@ -452,6 +452,7 @@ dl.meta dd.warning a.tag,
 }
 
 /* Fandom Hover */
+.fandom a.tag:hover,
 .work .fandom a.tag:hover,
 .work .fandoms a.tag:hover,
 .fandoms.heading a:hover {
