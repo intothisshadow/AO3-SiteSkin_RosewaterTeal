@@ -1,0 +1,590 @@
+/*
+ * Theme Name: Rosewater Teal v2 — Mobile Add-on
+ * Author: intothisshadow
+ * Author URI: https://www.so-obsessed.com
+ *
+ * ==============================================================
+ * HOW TO USE:
+ * 1. Save the desktop skin (style.css) as a site skin in AO3,
+ *    setting Media to "all". Keep it as your base skin.
+ * 2. Create a second site skin with this file's contents,
+ *    set Media to "handheld", "only screen and (max-width: 62em)" 
+ *    and "only screen  and (max-width: 42em)",and set the desktop
+ *    skin as its parent skin.
+ * 3. Activate the mobile skin — it will load both.
+ *
+ * BREAKPOINTS (matching AO3's own media CSS):
+ *   max-width: 62em  — tablet / landscape phone
+ *   max-width: 42em  — portrait phone
+ *   max-width: 30em  — very small phones
+ * ============================================================== */
+
+
+/* ============================================
+   SHARED — all mobile widths (≤ 62em)
+   Resets that apply everywhere below desktop
+   ============================================ */
+
+@media only screen and (max-width: 62em) {
+
+  /* --- Layout --- */
+
+  /* Stack main content full width — AO3's own CSS floats it beside the sidebar */
+  #main,
+  #main.dashboard {
+    float: none !important;
+    margin: auto !important;
+    max-width: 100% !important;
+    padding-left: 3.5% !important;
+    padding-right: 3.5% !important;
+    width: auto !important;
+  }
+
+  /* Cap admin page primary icon (AO3 news/admin_posts) */
+  .admin .primary .icon,
+  .admin .primary .icon img {
+    height: 60px !important;
+    max-height: 60px !important;
+    max-width: 60px !important;
+    width: 60px !important;
+  }
+
+  /* --- Dashboard — plain flowing links matching AO3 default mobile style --- */
+
+  #dashboard,
+  #dashboard.own {
+    background: var(--crimson-dark) !important;
+    border-bottom: 4px solid var(--accent-2) !important;
+    border-radius: 0 !important;
+    border-top: 4px solid var(--accent-2) !important;
+    clear: both !important;
+    float: none !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    padding: 0.5em 0 !important;
+    width: auto !important;
+  }
+
+  /* Headings hidden */
+  #dashboard h2,
+  #dashboard h3,
+  #dashboard h4 {
+    display: none !important;
+  }
+
+  /* Inline list — override desktop display:block using exact same selectors */
+  #dashboard ul,
+  #dashboard ul.navigation.actions {
+    border: none !important;
+    display: inline !important;
+    padding: 0 !important;
+    text-align: left !important;
+  }
+
+  #dashboard ul.navigation.actions li {
+    display: inline !important;
+  }
+
+  /* Override desktop display:block and style as plain flowing text links */
+  #dashboard a,
+  #dashboard a:link,
+  #dashboard a:visited,
+  #dashboard.own a,
+  #dashboard.own span:not(.current),
+  #dashboard ul.navigation.actions a,
+  #dashboard ul.navigation.actions a:link,
+  #dashboard ul.navigation.actions a:visited,
+  #dashboard ul.navigation.actions a:not(:hover):not(.current),
+  #dashboard ul.navigation.actions a:visited:not(:hover):not(.current),
+  #dashboard ul.navigation.actions a:hover,
+  #dashboard ul.navigation.actions a:focus {
+    background: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: var(--text-on-dark) !important;
+    display: inline-block !important;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Georgia, sans-serif !important;
+    font-size: 0.95em !important;
+    font-weight: normal !important;
+    letter-spacing: normal !important;
+    line-height: 2 !important;
+    margin: 0.25em 0 !important;
+    padding: 0 0.5em !important;
+    text-transform: none !important;
+    transform: none !important;
+  }
+
+  #dashboard a:hover,
+  #dashboard a:focus {
+    color: var(--accent-2) !important;
+    text-decoration: underline !important;
+  }
+
+  /* Current item — subtle highlight only */
+  #dashboard .current {
+    background: rgba(255,255,255,0.15) !important;
+    border-radius: var(--radius-sm) !important;
+    color: var(--text-on-dark) !important;
+    font-size: 0.95em !important;
+    font-weight: bold !important;
+    line-height: 2 !important;
+    padding: 0 0.5em !important;
+  }
+
+  /* --- Blurb cards — tighten spacing --- */
+
+  li.blurb,
+  li.work.blurb,
+  li.bookmark.blurb,
+  li.series.blurb,
+  li.collection.blurb.group {
+    padding: 14px !important;
+  }
+
+  /* --- Tag pills — ensure wrapping on smaller screens --- */
+
+  .fandom a.tag, .fandoms a.tag,
+  .relationships a.tag,
+  .characters a.tag,
+  .freeforms a.tag,
+  .warnings a.tag,
+  a.tag {
+    max-width: 80vw !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+  }
+
+  /* --- Workskin --- */
+
+  #workskin {
+    margin: auto 1.5% !important;
+    max-width: 97% !important;
+    padding: 2% 3% !important;
+  }
+
+  /* --- Splash modules — 2-column on tablet --- */
+
+  .logged-in .splash > .module,
+  .logged-in .splash > .favorite,
+  .logged-in .splash > .news {
+    box-sizing: border-box !important;
+    width: 48.5% !important;
+  }
+
+  .logged-in .splash > div:nth-of-type(odd) {
+    margin-left: 0 !important;
+    margin-right: 1.5% !important;
+  }
+
+  .logged-in .splash > div:nth-of-type(even) {
+    margin-left: 1.5% !important;
+    margin-right: 0 !important;
+  }
+
+  /* --- Kudos bar --- */
+
+  #kudos {
+    margin: 1em 0 !important;
+  }
+
+  /* --- Notices --- */
+
+  .notice, p.notice, div.notice,
+  .caution, p.caution,
+  .error, p.error, div.error,
+  .success, p.success, div.success {
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+}
+
+
+/* ============================================
+   SMALL — portrait phone (≤ 42em)
+   ============================================ */
+
+@media only screen and (max-width: 42em) {
+
+  /* --- Base font size reduction --- */
+
+  body {
+    font-size: 0.9em !important;
+  }
+
+  /* --- Header --- */
+
+  #header .logo {
+    height: 1.75em !important;
+    max-width: 140px !important;
+  }
+
+  #header .search {
+    display: none !important;
+  }
+
+  /* --- Dashboard --- */
+
+  #dashboard,
+  #dashboard.own {
+    border-bottom-width: 3px !important;
+    border-top-width: 3px !important;
+    margin: 0 !important;
+    padding: 0.25em 0 !important;
+  }
+
+  #dashboard a,
+  #dashboard.own a,
+  #dashboard.own span:not(.current),
+  #dashboard a:link,
+  #dashboard a:visited {
+    font-size: 0.9em !important;
+  }
+
+  #dashboard .current {
+    font-size: 0.9em !important;
+  }
+
+  /* --- Main content --- */
+
+  #main,
+  #main.dashboard {
+    padding-left: 2% !important;
+    padding-right: 2% !important;
+  }
+
+  /* --- Blurb cards --- */
+
+  li.blurb,
+  li.work.blurb,
+  li.bookmark.blurb,
+  li.series.blurb,
+  li.collection.blurb.group {
+    border-left-width: 5px !important;
+    border-radius: 4px 8px 4px 8px !important;
+    padding: 10px !important;
+  }
+
+  /* Fic title — slightly smaller */
+  #main li.work.blurb h4.heading a,
+  #main li.bookmark.blurb h4.heading a,
+  #main li.series.blurb h4.heading a {
+    font-size: 0.95em !important;
+  }
+
+  /* Stats dl — wrap gracefully */
+  .blurb dl.stats {
+    font-size: 0.85em !important;
+  }
+
+  /* --- Tag pills — tighter on phone --- */
+
+  a.tag {
+    font-size: 10px !important;
+    max-width: 85vw !important;
+    padding: 2px 6px !important;
+  }
+
+  .freeform .tag, .freeforms a.tag,
+  dl.meta dd.freeform a {
+    font-size: 9px !important;
+  }
+
+  /* Meta box */
+  dl.meta,
+  .blurb dl.meta {
+    padding: 10px !important;
+  }
+
+  /* --- Forms --- */
+
+  .filtered .index,
+  form.filters,
+  form dd,
+  form dt,
+  form .meta dd,
+  form .meta dt,
+  form.inbox {
+    float: none !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  /* --- Comments --- */
+
+  .comment div.icon {
+    height: 55px !important;
+    width: 55px !important;
+  }
+
+  .comment h4.byline {
+    margin-left: 62px !important;
+    padding-left: 0 !important;
+  }
+
+  .comment .userstuff {
+    min-height: 0 !important;
+  }
+
+  .thread .thread {
+    margin-left: 0.75em !important;
+  }
+
+  /* --- Workskin --- */
+
+  #workskin {
+    border-radius: 10px !important;
+    margin: auto !important;
+    max-width: 100% !important;
+    padding: 1.5em 4% !important;
+  }
+
+  #workskin .userstuff {
+    border-radius: 10px !important;
+    padding: 1em 3% !important;
+  }
+
+  /* Drop cap — reduce size on phone */
+  #workskin .userstuff > p:first-of-type::first-letter {
+    font-size: 2.2em !important;
+  }
+
+  /* --- Splash — single column on phone --- */
+
+  .splash div.module,
+  .logged-in .splash > .module,
+  .logged-in .splash > .favorite,
+  .logged-in .splash > .news,
+  .logged-in .splash > div:nth-of-type(odd),
+  .logged-in .splash > div:nth-of-type(even) {
+    clear: both !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  .splash {
+    padding: 0 !important;
+  }
+
+  /* Splash headings — reduce padding */
+  .splash .favorite h3, .splash .favorite h4,
+  .splash .module h3, .splash .module h4 {
+    font-size: 1em !important;
+    padding: 8px 14px 22px !important;
+  }
+
+  /* Clear required-tags icons from blurb titles in splash on mobile */
+  .splash li.blurb .header.module h4.heading,
+  #main .splash li.blurb .header.module h4.heading {
+    display: block !important;
+    margin-left: 60px !important;
+    overflow: visible !important;
+  }
+
+  /* --- Reading history footer row --- */
+
+  li.reading.work.blurb.group div.user.module.group {
+    font-size: 0.55em !important;
+  }
+
+  /* --- Work meta sidebar --- */
+
+  dl.work.meta.group {
+    padding: 10px !important;
+  }
+
+  dl.work.meta.group dt {
+    font-size: 0.8em !important;
+  }
+
+  /* --- Headings --- */
+
+  h1 { font-size: 1.4em !important; }
+  h2 { font-size: 1.2em !important; }
+  h3 { font-size: 1.1em !important; }
+  h4 { font-size: 1em !important; }
+
+  /* Work page h1 gradient */
+  #workskin h1:not(.landmark),
+  #chapters h1:not(.landmark) {
+    font-size: 1.6em !important;
+  }
+
+  /* --- User profile banner --- */
+
+  /* Hide icon on mobile — absolute positioning breaks in AO3's mobile layout */
+  #main .user.home .icon,
+  #main .user.profile .icon,
+  #main .user.home .userpic,
+  #main .user.profile .userpic {
+    display: none !important;
+  }
+
+  /* Banner fills full width without icon */
+  .user.home div.primary.header.module,
+  .user.profile div.primary.header.module {
+    padding: 0 !important;
+  }
+
+  .user.home h2.heading,
+  .user.profile h2.heading {
+    box-sizing: border-box !important;
+    font-size: 1.3em !important;
+    margin-bottom: 0.75em !important;
+    margin-left: 0 !important;
+    padding: 10px 14px 10px 14px !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+}
+
+
+/* ============================================
+   VERY SMALL — tiny phones (≤ 30em)
+   ============================================ */
+
+@media only screen and (max-width: 30em) {
+
+  /* --- Base font --- */
+
+  body {
+    font-size: 0.85em !important;
+  }
+
+  /* --- Header --- */
+
+  #header .logo {
+    height: 1.5em !important;
+    max-width: 110px !important;
+  }
+
+  /* --- Dashboard — very compact --- */
+
+  #dashboard a,
+  #dashboard.own a,
+  #dashboard.own span:not(.current),
+  #dashboard a:link,
+  #dashboard a:visited {
+    font-size: 0.85em !important;
+  }
+
+  #dashboard .current {
+    font-size: 0.85em !important;
+  }
+
+  /* --- Blurb cards --- */
+
+  li.blurb,
+  li.work.blurb,
+  li.bookmark.blurb,
+  li.series.blurb,
+  li.collection.blurb.group {
+    border-left-width: 4px !important;
+    margin-bottom: 1.2em !important;
+    padding: 8px !important;
+  }
+
+  /* --- Tags --- */
+
+  a.tag {
+    font-size: 9px !important;
+    padding: 1px 5px !important;
+  }
+
+  /* --- Workskin --- */
+
+  #workskin {
+    border-radius: 6px !important;
+    font-size: 1em !important;
+    padding: 1em 3% !important;
+  }
+
+  #workskin .userstuff {
+    border-radius: 6px !important;
+    padding: 0.75em 3% !important;
+  }
+
+  /* Drop cap — disable on very small screens to avoid layout issues */
+  #workskin .userstuff > p:first-of-type::first-letter {
+    float: none !important;
+    font-size: inherit !important;
+    margin: 0 !important;
+  }
+
+  /* First line small caps — disable on very small screens */
+  #workskin .userstuff > p:first-of-type::first-line {
+    font-variant: normal !important;
+    letter-spacing: normal !important;
+  }
+
+  /* --- Splash headings --- */
+
+  .splash .favorite h3, .splash .favorite h4,
+  .splash .module h3, .splash .module h4 {
+    font-size: 0.95em !important;
+    padding: 6px 10px 18px !important;
+  }
+
+  /* --- Comments --- */
+
+  .comment div.icon {
+    display: none !important;
+  }
+
+  .comment h4.byline {
+    margin-left: 0 !important;
+  }
+
+  li.comment {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 10px !important;
+  }
+
+  /* --- Headings --- */
+
+  h1 { font-size: 1.25em !important; }
+  h2 { font-size: 1.1em !important; }
+  h3 { font-size: 1em !important; }
+  h4 { font-size: 0.95em !important; }
+
+  #workskin h1:not(.landmark),
+  #chapters h1:not(.landmark) {
+    font-size: 1.35em !important;
+  }
+
+  /* --- Work metadata --- */
+
+  dl.work.meta.group {
+    border-left-width: 4px !important;
+    font-size: 0.9em !important;
+    padding: 8px !important;
+  }
+
+  /* --- User profile --- */
+
+  .user.home h2.heading,
+  .user.profile h2.heading {
+    font-size: 1.1em !important;
+    padding: 8px 10px !important;
+    text-align: left !important;
+  }
+
+  /* --- Kudos --- */
+
+  #kudos {
+    border-left-width: 4px !important;
+    padding: 10px !important;
+  }
+
+  /* --- Reading history --- */
+
+  li.reading.work.blurb.group div.user.module.group {
+    font-size: 0.5em !important;
+  }
+
+}
