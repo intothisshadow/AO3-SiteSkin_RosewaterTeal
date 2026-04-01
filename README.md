@@ -60,21 +60,20 @@ https://github.com/ZerafinaCSS/ | https://archiveofourown.org/works/57331222
 
 # SCREENSHOTS - Desktop
 
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/desktop_screenshot1.jpg)
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/desktop_screenshot2.jpg)
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/desktop_screenshot3.jpg)
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/desktop_screenshot4.jpg)
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/desktop_screenshot5.jpg)
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/desktop_screenshot6.jpg)
+![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_desktop1.jpg)
+![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_desktop2.jpg)
+![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_desktop3.jpg)
+![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_desktop4.jpg)
+![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_desktop5.jpg)
+![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_desktop6.jpg)
 
 # SCREENSHOTS - Mobile
 
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_mobil01.jpg)
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/mobile_screenshot1.jpg)
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/mobile_screenshot2.jpg)
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/mobile_screenshot3.jpg)
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/mobile_screenshot4.jpg)
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/mobile_screenshot5.jpg)
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/mobile_screenshot6.jpg)
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/mobile_screenshot7.jpg)
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/mobile_screenshot8.jpg)
+![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_mobile1.jpg)
+![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_mobile2.jpg)
+![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_mobile3.jpg)
+![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_mobile4.jpg)
+![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_mobile5.jpg)
+![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_mobile6.jpg)
+![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_mobile7.jpg)
+![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_mobile8.jpg)
