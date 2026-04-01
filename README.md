@@ -69,8 +69,7 @@ https://github.com/ZerafinaCSS/ | https://archiveofourown.org/works/57331222
 
 # SCREENSHOTS - Mobile
 
-![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_mobile01.jpg)
-
+![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/screenshot_mobil01.jpg)
 ![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/mobile_screenshot1.jpg)
 ![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/mobile_screenshot2.jpg)
 ![image](https://raw.githubusercontent.com/intothisshadow/AO3-SiteSkin_RosewaterTeal/refs/heads/main/mobile_screenshot3.jpg)
