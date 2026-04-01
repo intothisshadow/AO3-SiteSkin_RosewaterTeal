@@ -1,0 +1,3568 @@
+/* ============================================
+ * Theme Name: Rosewater Teal - AO3 Site Skin V2
+ * Author: intothisshadow
+ * Author URI: https://www.so-obsessed.com
+ *
+ * ==============================================================
+ * LINKS & CREDITS
+ * ==============================================================
+ *
+ * CODE & INSTRUCTIONS:
+ *
+ * - Code (Github):       https://github.com/intothisshadow/AO3-SiteSkin_RosewaterTeal
+ * - Instructions (AO3): https://archiveofourown.org/works/79832301
+ *
+ * FONTS:
+ *
+ * - This theme uses GoudyBookletter1911-Regular.ttf. You can download it
+ *   from https://fonts.google.com/specimen/Goudy+Bookletter+1911
+ *
+ * CREDITS:
+ *
+ * - AO3 logo upgrade and colorization code (Replace the AO3 Icons 2.0 [Site Skin])
+ *   by ZerafinaCSS (Zerafina)
+ *   https://github.com/ZerafinaCSS/ | https://archiveofourown.org/users/Zerafina/pseuds/ZerafinaCSS
+ *
+ * FIND ME ON:
+ *
+ * - Github:   https://github.com/intothisshadow
+ * - AO3:      https://archiveofourown.org/users/intothisshadow/
+ * - Website:  https://www.so-obsessed.com
+ *
+ * COLOR PALETTE:
+ *   #bf4646  Crimson Red
+ *   #a33535  Crimson Mid
+ *   #8b2626  Deep Oxblood
+ *   #d87070  Light Crimson (button highlight)
+ *   #7eacb5  Signature Teal
+ *   #3f8f9a  Deep Teal
+ *   #5e8a93  Mid Teal
+ *   #9ec8cf  Soft Teal
+ *   #fff4ea  Pale Cream Parchment
+ *   #eddcc6  Aged Beige
+ *   #cbb49a  Tan Border
+ *   #2b1f1f  Dark Brown (body text)
+ *   #5e4040  Muted Warm Brown (secondary text)
+ *   #a63434  Link Crimson
+ *   #5e1c1c  Visited Link Wine
+ *   #1f5f68  Active Link Teal-Blue
+ *
+ * HOW TO USE:
+ *   1. Edit the :root block to adjust colors, radii, or surface backgrounds.
+ *   2. Font stacks are hardcoded (AO3 does not allow CSS variables in font-family).
+ *   3. Tag pill colours have their own variables — see "Tag pill colours" in :root.
+ *   4. Link colours have their own variables — --link, --link-visited,        --link-active.
+ *   5. Goudy Bookletter 1911 must be installed on the user's system or injected via
+ *      a browser extension such as Stylus. AO3 does not support @font-face or
+ *      @import, so the font cannot be loaded via the skin itself. Users without the
+ *      font installed will see the fallback serif instead.
+ *      Download: https://fonts.google.com/specimen/Goudy+Bookletter+1911
+ *
+ *   NOTE: AO3's CSS validator does not allow @font-face, @import, CSS custom
+ *   properties (variables) for font-family values, or url() in background
+ *   shorthand. Those are hardcoded per the rules below. Everything else uses
+ *   variables.
+ *
+ *   Table of contents:
+ *     0.  Variables (EDIT HERE)
+ *     1.  Global / Reset
+ *     2.  Typography
+ *     3.  Links
+ *     4.  Header & Navigation
+ *     5.  Greeting / User Menu
+ *     6.  Sidebar & Dashboard
+ *     7.  Buttons & Actions
+ *     8.  Forms & Inputs
+ *     9.  Tag System
+ *    10.  Work Blurb Cards
+ *    11.  Work Page
+ *    12.  Comments
+ *    13.  Notices & Alerts
+ *    14.  Front Page (Splash)
+ *    15.  Index Pages (Media, Fandoms, Collections)
+ *    16.  Profile & Stats Pages
+ *    17.  User Profile
+ *    18.  Reading History
+ *    19.  Miscellaneous (Scrollbar, Selection, Pre)
+ *    20.  Footer
+ *    21.  Replace the AO3 Icons - default color scheme by zerafinacss
+ * ============================================ */
+
+
+/* ============================================
+   0. VARIABLES — EDIT HERE
+   ============================================ */
+
+:root {
+
+  /* ── Palette: Rosewater Teal ────────────────────────────────────────────────
+     Crimson Red:      #bf4646    Crimson Mid:      #a33535
+     Deep Oxblood:     #8b2626    Light Crimson:    #d87070
+     Signature Teal:   #7eacb5    Deep Teal:        #3f8f9a
+     Mid Teal:         #5e8a93    Soft Teal:        #9ec8cf
+     Pale Parchment:   #fff4ea    Aged Beige:       #eddcc6
+     Tan Border:       #cbb49a    Dark text:        #2b1f1f
+     Muted text:       #5e4040    Link crimson:     #a63434
+     Visited wine:     #5e1c1c    Active teal-blue: #1f5f68
+  ─────────────────────────────────────────────────────────────────────── */
+
+  /* --- Core palette --- */
+  --accent-1:      #7eacb5;   /* Signature Teal — sidebar, borders, tags           */
+  --accent-2:      #eddcc6;   /* Aged Beige — soft borders, hover highlights        */
+
+  /* --- Derived shades --- */
+  --accent-1-dark:   #3f8f9a;               /* Deep Teal for hover/focus            */
+  --accent-1-mid:    #5e8a93;               /* Mid teal — gradient stops             */
+  --accent-1-light:  #9ec8cf;               /* Soft teal for muted contexts          */
+
+  /* --- Crimson accent (buttons, headings, decorative borders) --- */
+  --crimson:         #bf4646;
+  --crimson-dark:    #8b2626;
+  --crimson-mid:     #a33535;
+
+  /* --- Text --- */
+  --text:         #2b1f1f;   /* Dark brown — main body text                    */
+  --text-muted:   #5e4040;   /* Muted warm brown — secondary/muted text        */
+  --text-on-dark: #fff4ea;   /* Pale cream on dark surfaces                    */
+  --white:        #ffffff;   /* Pure white — tag text on dark backgrounds       */
+
+  /* --- Link colours --- */
+  --link:         #a63434;   /* Default link crimson                            */
+  --link-visited: #5e1c1c;   /* Visited link dark wine                          */
+  --link-active:  #1f5f68;   /* Active/hover deep teal-blue                     */
+
+  /* --- Borders --- */
+  --border:        #cbb49a;                  /* Tan — default border                */
+  --border-light:  rgba(203,180,154,0.35);
+  --border-dark:   #7eacb5;                  /* Teal — accent border                */
+  --border-width:  3px;                      /* Shared border thickness             */
+
+  /* --- Surface backgrounds --- */
+  --card-bg:   #fff4ea;   /* Pale Parchment — card/content backgrounds           */
+  --panel-bg:  #eddcc6;   /* Aged Beige — panel, sidebar, tag pill backgrounds   */
+
+  /* --- Tag pill colours — EDIT HERE to recolour tag pills --- */
+
+  /* Fandom — teal gradient */
+  --tag-fandom-bg:        linear-gradient(135deg, #7eacb5, #6a949d);
+  --tag-fandom-hover-bg:  linear-gradient(135deg, #bf4646, #a33535);
+
+  /* Relationship — crimson gradient */
+  --tag-relationship-bg:       linear-gradient(135deg, #bf4646, #a33535);
+  --tag-relationship-hover-bg: linear-gradient(135deg, #8b2626, #bf4646);
+
+  /* Character — flat teal */
+  --tag-character-bg:       #7eacb5;
+  --tag-character-hover-bg: linear-gradient(135deg, #7eacb5, #5e8a93);
+
+  /* Freeform — beige with crimson top */
+  --tag-freeform-bg:       #eddcc6;
+  --tag-freeform-border:   #cbb49a;
+  --tag-freeform-hover-bg: linear-gradient(135deg, #7eacb5, #5e8a93);
+
+  /* Warning/Rating — parchment with teal spine */
+  --tag-warning-bg:        #fff4ea;
+  --tag-warning-border:    #cbb49a;
+  --tag-warning-spine:     #7eacb5;
+
+  /* --- Button gradient (crimson, used for all site action buttons) ---
+     Base gradient:  --btn-start -> --btn-mid -> --btn-end */
+  --btn-start:        #d87070;   /* Light crimson — gradient left  */
+  --btn-mid:          #bf4646;   /* Crimson — gradient centre      */
+  --btn-end:          #8b2626;   /* Oxblood — gradient right       */
+  --btn-border:       var(--accent-2); /* Beige border on base state     */
+  --btn-hover-border: var(--accent-2); /* Beige border on hover          */
+
+  /* --- Border radii --- */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-full: 20px;
+
+}
+
+
+/* ============================================
+   1. GLOBAL / RESET
+   ============================================ */
+
+/* Full-page teal gradient background */
+body,
+#outer.margin,
+#inner.margin,
+.home.index,
+#main,
+#outer-page-wrapper {
+  background: linear-gradient(to bottom, var(--accent-1) 0%, #6a949d 100%) fixed !important;
+  background-color: var(--accent-1) !important;
+  color: var(--text) !important;
+  min-height: 100vh;
+  text-align: left !important;
+}
+
+/* Remove extra top space AO3 adds above the main content area */
+#main {
+  margin-top: auto !important;
+  padding-top: 0 !important;
+}
+
+/* Prevent horizontal overflow */
+img, video, object, embed {
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+iframe {
+  max-width: 100% !important;
+}
+
+/* Wide tables scroll horizontally */
+table {
+  display: block !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  word-break: break-word !important;
+}
+
+/* Overflow fixes */
+#main,
+#wrapper {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/* FONT: BODY — edit this font stack directly (variables not allowed here) */
+body, body * {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Georgia, sans-serif, 'GNU Unifont' !important;
+}
+
+
+/* FONT: UI — edit this font stack directly (variables not allowed here) */
+input, select, textarea, button, .actions, pre, code {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Helvetica, sans-serif !important;
+}
+
+/* Horizontal rule — crimson to teal gradient bar */
+hr {
+  background: linear-gradient(90deg, var(--crimson) 0%, var(--accent-1) 50%, #3f8f9a 100%) !important;
+  border: 0 !important;
+  height: 3px !important;
+}
+
+strong, b { font-weight: bold !important; }
+em, cite, i { font-style: italic !important; }
+
+/* Text-selection highlight */
+::selection {
+  background: rgba(126,172,181,0.35) !important;
+  color: var(--text) !important;
+}
+
+/* AO3 logo upgrade and colorization code by ZerafinaCSS */
+#header .logo {
+  content: url("/images/logo.png");
+  filter: brightness(0) saturate(100%) invert(92%) sepia(16%) saturate(357%) hue-rotate(341deg) brightness(95%) contrast(94%);
+  max-height: 40px !important;
+  max-width: 180px !important;
+}
+
+
+/* ============================================
+   2. TYPOGRAPHY
+   ============================================ */
+
+p  { font-size: 1em !important; }
+small { font-size: 0.8em !important; }
+
+/* h1–h6 base — Goudy, alternating crimson/teal */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.04em !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Odd levels — crimson */
+h1, h3, h5 {
+  color: var(--crimson-dark) !important;
+}
+
+/* Even levels — teal */
+h2, h4, h6 {
+  color: var(--accent-1-dark) !important;
+}
+
+/* Size scale */
+h1 { font-size: 1.7em !important; }
+h2 { font-size: 1.45em !important; }
+h3 { font-size: 1.25em !important; }
+h4 { font-size: 1.1em !important; }
+h5 { font-size: 0.95em !important; }
+h6 { font-size: 0.85em !important; }
+
+/* h4 layout reset */
+h4 {
+  position: relative;
+  text-align: left;
+}
+
+.heading {
+  font-weight: 500 !important;
+  overflow-wrap: break-word !important;
+}
+/* Named .heading elements get a teal underline */
+h2.heading, h3.heading, h4.heading {
+  border-bottom: 2px solid var(--border-dark) !important;
+  color: var(--crimson-dark) !important;
+  padding-bottom: 4px !important;
+}
+
+/* Decorative underline on h2 */
+h2:after,
+.splash .module h2:after,
+.splash .module h3:after {
+  background: linear-gradient(90deg, #bf4646, #7eacb5);
+  border-radius: 2px;
+  content: "";
+  display: block;
+  height: 3px;
+  margin-top: .35em;
+  width: 3em;
+}
+
+/* Extra space after heading on static content pages */
+#main.system h2:after,
+#main.docs h2:after {
+  margin-bottom: 1em;
+}
+
+/* Profile page section headings */
+#main .listbox.group > h3.heading {
+  border-bottom: none !important;
+  color: var(--text) !important;
+}
+
+/* Collapse landmark headings visually while keeping them in the DOM */
+h3.landmark.heading,
+h4.landmark.heading,
+h5.landmark.heading,
+h6.landmark.heading {
+  background: transparent !important;
+  border: none !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+/* Author name links — italic teal across all contexts */
+a[rel="author"],
+a[rel="author"]:link,
+.byline a,
+.byline a:link {
+  border-bottom: none !important;
+  color: var(--accent-1-dark) !important;
+  font-style: italic !important;
+}
+
+a[rel="author"]:visited,
+.byline a:visited {
+  border-bottom: none !important;
+  color: var(--accent-1-mid) !important;
+  font-style: italic !important;
+}
+
+a[rel="author"]:hover,
+.byline a:hover {
+  color: var(--accent-1-dark) !important;
+  text-decoration: underline !important;
+}
+
+
+
+.datetime {
+  font-size: xx-small !important;
+}
+
+
+/* ============================================
+   3. LINKS
+   ============================================ */
+
+/* Default link — crimson with teal underline */
+a, a:link {
+  border-bottom: 2px solid rgba(166,52,52,0.35) !important;
+  color: var(--link) !important;
+  font-weight: 500;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+a:visited {
+  border-bottom: 1px dashed rgba(94,28,28,0.4) !important;
+  color: var(--link-visited) !important;
+  text-decoration: none !important;
+}
+
+a:hover, a:focus {
+  border-bottom-color: var(--accent-1-dark) !important;
+  color: var(--accent-1-dark) !important;
+  text-decoration: none !important;
+}
+
+a:active {
+  color: var(--link-active) !important;
+}
+
+/* Header/greeting links - suppress underline clash and global link styles */
+#header a, #header a:link, #header a:visited,
+#greeting a, #greeting a:link, #greeting a:visited {
+  border-bottom: none !important;
+}
+
+#header a:hover, #header a:focus,
+#greeting a:hover, #greeting a:focus {
+  text-decoration: none !important;
+}
+
+/* Links inside card headings */
+.heading a, .heading a:visited,
+h4.heading a, h4.heading a:link, h4.heading a:visited {
+  color: var(--crimson-dark) !important;
+  font-weight: bold !important;
+}
+
+/* Author links inside any .heading */
+.heading a[rel="author"],
+.heading a[rel="author"]:link,
+h3.byline.heading a,
+h3.byline.heading a:link,
+h4.heading a[rel="author"],
+h4.heading a[rel="author"]:link {
+  color: var(--accent-1-dark) !important;
+  font-style: italic !important;
+}
+
+.heading a[rel="author"]:visited,
+h3.byline.heading a:visited,
+h4.heading a[rel="author"]:visited {
+  color: var(--accent-1-mid) !important;
+  font-style: italic !important;
+}
+
+.heading a[rel="author"]:hover,
+h3.byline.heading a:hover,
+h4.heading a[rel="author"]:hover {
+  color: var(--accent-1-dark) !important;
+  text-decoration: underline !important;
+}
+
+
+
+/* Active / currently-selected state — teal pill */
+.actions a:active,
+.current,
+a.current,
+a:link.current,
+.current a:visited {
+  background: linear-gradient(135deg, var(--accent-1-dark) 0%, var(--accent-1) 70%, var(--accent-1-light) 100%) !important;
+  border-color: var(--accent-1-light) !important;
+  border-radius: 5px !important;
+  box-shadow: inset 1px 1px 3px rgba(126,172,181,0.4), 0 2px 8px rgba(126,172,181,0.2) !important;
+  color: var(--text-on-dark) !important;
+}
+
+
+/* ============================================
+   4. HEADER & NAVIGATION
+   ============================================ */
+
+#header {
+  background: linear-gradient(to bottom, var(--crimson) 0%, var(--crimson-mid) 100%) !important;
+  border-bottom: var(--border-width) solid var(--accent-2) !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3) !important;
+}
+
+#header .primary,
+#header .search {
+  background: linear-gradient(90deg, #bf4646, #7eacb5) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1) !important;
+}
+
+#header h1.heading {
+  font-size: 1em !important;
+}
+
+#header .heading a,
+#header .heading a span,
+#header .heading a sup {
+  color: var(--card-bg) !important;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  font-size: 1.3em;
+  font-weight: normal !important;
+  line-height: 1.35em;
+}
+
+#header .primary a,
+#header .primary .dropdown-toggle {
+  color: var(--text-on-dark) !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4) !important;
+}
+
+/* Search bar */
+#header .search fieldset {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#header .search input[type="text"],
+#header .search input[type="search"] {
+  background: rgba(255,244,234,0.92) !important;
+  border: 1px solid var(--accent-2) !important;
+  border-radius: var(--radius-full) 0 0 var(--radius-full) !important;
+  border-right: none !important;
+  color: var(--text) !important;
+  flex: 1 1 auto !important;
+  font-size: 0.85em !important;
+  height: 1.8em !important;
+  padding: 2px 10px !important;
+}
+
+#header .search input[type="submit"],
+#header .search button[type="submit"],
+#header .search button {
+  background: linear-gradient(135deg, var(--btn-start) 0%, var(--btn-mid) 50%, var(--btn-end) 100%) !important;
+  border: 1px solid var(--btn-border) !important;
+  border-left: none !important;
+  border-radius: 0 var(--radius-full) var(--radius-full) 0 !important;
+  box-shadow: 0 2px 8px rgba(191,70,70,0.4) !important;
+  color: var(--text-on-dark) !important;
+  cursor: pointer !important;
+  flex: 0 0 auto !important;
+  font-size: 0.85em !important;
+  font-weight: 700 !important;
+  height: 1.8em !important;
+  margin: 0 !important;
+  padding: 2px 10px !important;
+}
+
+#header .search input[type="submit"]:hover,
+#header .search button[type="submit"]:hover,
+#header .search button:hover {
+  background: linear-gradient(135deg, var(--btn-hover-start) 0%, var(--btn-hover-mid) 50%, var(--btn-end) 100%) !important;
+}
+
+/* Dropdown menus */
+#header .menu,
+#small_login,
+#greeting .menu {
+  background: var(--accent-1) !important;
+  background-image: linear-gradient(to bottom, rgba(126,172,181,0.98) 0%, rgba(106,148,157,0.98) 100%) !important;
+  border: 1px solid #eddcc6 !important;
+  border-radius: 0 0 8px 8px !important;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.3) !important;
+}
+
+#header .dropdown .menu a,
+#greeting .menu li a {
+  color: var(--card-bg) !important;
+}
+
+/* Restore default display/padding on dropdown items — .actions a button rule strips these */
+#header .menu li,
+#greeting .menu li {
+  display: block !important;
+  list-style: none !important;
+}
+
+#header .menu li a,
+#greeting .menu li a {
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--card-bg) !important;
+  display: block !important;
+  font-size: inherit !important;
+  font-weight: normal !important;
+  line-height: inherit !important;
+  padding: 0.4em 0.8em !important;
+  text-shadow: none !important;
+  vertical-align: inherit !important;
+}
+
+#header .dropdown .menu a:hover,
+#greeting .menu li a:hover {
+  background: rgba(191,70,70,0.9) !important;
+  color: var(--white) !important;
+}
+
+#greeting p.icon {
+  padding: 0 !important;
+}
+
+#greeting p.icon img,
+#greeting .icon img {
+  border: 2px solid var(--accent-2) !important;
+  border-bottom: 3px solid var(--crimson) !important;
+  border-radius: 4px !important;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.3) !important;
+  display: inline-block !important;
+  filter: brightness(1.04) saturate(1.06) !important;
+  height: 40px !important;
+  vertical-align: middle !important;
+  width: 40px !important;
+}
+
+/* ============================================
+   5. GREETING / USER MENU
+   ============================================ */
+
+#greeting {
+  background: linear-gradient(to bottom, var(--accent-1) 0%, var(--accent-1-mid) 100%) !important;
+  border-bottom: 2px solid #8b2626 !important;
+  border-radius: 0 0 8px 8px !important;
+  color: var(--card-bg) !important;
+  display: inline-block !important;
+  float: right !important;
+  padding: 0.3em 0.75em !important;
+}
+
+
+#greeting a,
+#greeting a:link,
+#greeting a:visited {
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--card-bg) !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  padding: 0.2em 0.3em !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4) !important;
+  text-transform: none !important;
+  vertical-align: middle !important;
+}
+
+
+
+
+
+/* ============================================
+   6. SIDEBAR & DASHBOARD
+   ============================================ */
+
+#dashboard,
+#dashboard.own {
+  background-color: var(--accent-1) !important;
+  border-bottom: 2px solid #7eacb5 !important;
+  border-top: 2px solid #7eacb5 !important;
+  font-size: 1.1em !important;
+  letter-spacing: 1px !important;
+  padding: 15px 0 !important;
+  text-transform: uppercase !important;
+}
+
+#dashboard h2, #dashboard h2.heading,
+#dashboard h3, #dashboard h3.heading,
+#dashboard h4, #dashboard h4.heading {
+  background: linear-gradient(90deg, var(--crimson) 0%, var(--accent-1) 100%) !important;
+  border: none !important;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0 !important;
+  color: var(--text-on-dark) !important;
+  font-size: 1em !important;
+  letter-spacing: 0.03em !important;
+  margin: 0 !important;
+  padding: 6px 10px !important;
+}
+
+#dashboard a,
+#dashboard.own a,
+#dashboard.own span:not(.current),
+#dashboard a:link,
+#dashboard a:visited {
+  background: none !important;
+  border-bottom: none !important;
+  color: var(--card-bg) !important;
+  display: block !important;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  font-size: 0.9em !important;
+  font-weight: normal !important;
+  letter-spacing: 0.08em !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+}
+
+
+
+/* Force list items to stack vertically */
+#dashboard ul.navigation.actions li {
+  display: block !important;
+}
+
+
+
+.listbox .index {
+  background-color: var(--panel-bg) !important;
+}
+
+.listbox,
+fieldset,
+fieldset dl dl,
+fieldset fieldset fieldset,
+fieldset fieldset dl dl,
+dd.hideme,
+form blockquote.userstuff,
+.dynamic form {
+  background: linear-gradient(315deg, var(--crimson) 0%, #d88a8a 35%, #a9c9cf 70%, var(--accent-1) 100%);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--accent-1);
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(120,80,80,.15);
+}
+
+
+/* ============================================
+   7. BUTTONS & ACTIONS
+   ============================================ */
+
+/* All crimson-gradient buttons */
+.actions a, .actions a:link,
+.action, .action:link,
+.actions button,
+.actions input,
+input[type="submit"],
+button,
+.actions label,
+li.module.action {
+  background: linear-gradient(to bottom, var(--crimson) 0%, var(--crimson-mid) 100%) !important;
+  border: 1px solid var(--accent-2) !important;
+  border-bottom: none !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-on-dark) !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+  font-size: 0.9em !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  padding: 5px 12px !important;
+  text-decoration: none !important;
+  vertical-align: middle !important;
+}
+
+/* Visited state */
+.actions a:visited,
+.action:visited {
+  background: linear-gradient(to bottom, var(--crimson) 0%, var(--crimson-mid) 100%) !important;
+  color: var(--text-on-dark) !important;
+}
+
+/* Hover / focus state — switches to teal */
+.actions a:hover, .actions a:focus,
+.action:hover, .action:focus,
+.actions button:hover, .actions button:focus,
+.actions input:hover, .actions input:focus,
+input[type="submit"]:hover, input[type="submit"]:focus,
+button:hover, button:focus,
+label.action:hover, label.action:focus,
+li.module.action:hover {
+  background: var(--accent-1) !important;
+  border-color: var(--btn-hover-border) !important;
+  color: var(--text-on-dark) !important;
+  text-decoration: none !important;
+}
+
+/* Chapter nav padding */
+.chapter.navigation .next a,
+.chapter.navigation .previous a,
+#chapters .navigation .next a,
+#chapters .navigation .previous a,
+.work.navigation.actions a,
+#feedback .actions a {
+  padding: 4px 14px !important;
+}
+
+/* ── Restore rules ── */
+
+/* Header primary nav + greeting links — strip .actions a gradient, restore plain cream text */
+#header .primary.navigation a,
+#header .primary.navigation a:link,
+#header .primary.navigation a:visited {
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--card-bg) !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  margin-top: 0.2em !important;
+  padding: 0.5em 0.4em !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4) !important;
+  text-transform: none !important;
+  vertical-align: middle !important;
+}
+
+
+/* Restore spacing on nav list items themselves */
+#header .primary.navigation > ul > li {
+  display: inline-block !important;
+  padding: 0 !important;
+  vertical-align: middle !important;
+}
+
+#header .primary.navigation li.dropdown ul.menu li {
+  display: block !important;
+  padding: 0 !important;
+}
+
+#header .primary.navigation li.dropdown ul.menu li a,
+#header .primary.navigation li.dropdown ul.menu li a:visited {
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--card-bg) !important;
+  display: block !important;
+  font-size: inherit !important;
+  font-weight: normal !important;
+  line-height: inherit !important;
+  padding: 0.4em 0.8em !important;
+  text-shadow: none !important;
+  vertical-align: inherit !important;
+}
+
+#header .primary.navigation li.dropdown ul.menu li a:hover {
+  background: rgba(191,70,70,0.9) !important;
+  color: var(--white) !important;
+}
+
+#header .primary.navigation a:hover,
+#header .primary.navigation a:focus,
+#greeting a:hover,
+#greeting a:focus {
+  background: rgba(191,70,70,0.9) !important;
+  color: var(--white) !important;
+}
+
+/* Re-apply gradient to .actions links inside #main.dashboard */
+#main.dashboard .actions a,
+#main.dashboard .actions a:link,
+#main.dashboard .actions a:visited {
+  background: linear-gradient(to bottom, var(--crimson) 0%, var(--crimson-mid) 100%) !important;
+  border-bottom: none !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-on-dark) !important;
+  display: inline-block !important;
+  font-size: 0.9em !important;
+  font-weight: 600 !important;
+  padding: 4px 12px !important;
+  text-decoration: none !important;
+  text-transform: none !important;
+}
+
+#main.dashboard .actions a:hover {
+  background: var(--accent-1) !important;
+  color: var(--text-on-dark) !important;
+}
+
+/* span.unread badge */
+#main.dashboard .actions span.unread {
+  background: linear-gradient(to bottom, var(--crimson) 0%, var(--crimson-mid) 100%) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-on-dark) !important;
+  display: inline-block !important;
+  font-size: 0.9em !important;
+  font-weight: 600 !important;
+  padding: 4px 12px !important;
+}
+
+/* Sidebar NAV links - base state */
+#dashboard ul.navigation.actions a:not(:hover):not(.current),
+#dashboard ul.navigation.actions a:visited:not(:hover):not(.current) {
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--card-bg) !important;
+  display: block !important;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  line-height: 2 !important;
+  text-transform: uppercase !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* Sidebar NAV links - hover state */
+#dashboard ul.navigation.actions a:hover,
+#dashboard ul.navigation.actions a:focus {
+  background: linear-gradient(90deg, var(--crimson-dark) 0%, var(--crimson) 100%) !important;
+  border: none !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  color: var(--card-bg) !important;
+  display: block !important;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  line-height: 2 !important;
+  text-transform: uppercase !important;
+  transform: scale(1.05) !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* Currently-active nav link — teal pill */
+#dashboard .current {
+  background: linear-gradient(135deg, var(--accent-1-dark) 0%, var(--accent-1) 70%, var(--accent-1-light) 100%) !important;
+  border: none !important;
+  border-radius: 5px !important;
+  box-shadow: 0 2px 10px rgba(126,172,181,0.35) !important;
+  color: var(--text-on-dark) !important;
+  display: block !important;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  font-weight: bold !important;
+  line-height: 2 !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+}
+
+/* Footer buttons — plain text */
+#footer .actions a,
+#footer .actions a:visited,
+#footer .actions button,
+#footer button {
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--text-on-dark) !important;
+}
+
+/* Download dropdown links */
+.download.module .download ul.expandable.secondary a,
+.download.module .download ul.expandable.secondary a:visited {
+  background: none !important;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--text) !important;
+}
+
+/* Author links — italic teal, never gradient buttons */
+a[rel="author"], a[rel="author"]:link, a[rel="author"]:visited,
+.byline a, .byline a:link, .byline a:visited,
+.heading a[rel="author"], .heading a[rel="author"]:link {
+  background: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--accent-1-dark) !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  padding: 0 !important;
+}
+
+
+
+/* Heading .actions — plain text */
+.heading .actions a,
+.heading .actions button,
+.heading .action {
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--text-muted) !important;
+  font-size: 0.85em !important;
+  padding: 0.15em 0.375em !important;
+}
+
+/* Rich text (TinyMCE) editor */
+.tox .tox-tbtn {
+  background: var(--white) !important;
+  border: 4px solid var(--accent-1) !important;
+}
+
+.tox .tox-tbtn:hover {
+  background: var(--white) !important;
+  border: 4px solid var(--crimson) !important;
+}
+
+
+/* ============================================
+   8. FORMS & INPUTS
+   ============================================ */
+
+/* Skin editor autocomplete overflow fix */
+#main.skins-new fieldset.listbox.group,
+#main.skins-edit fieldset.listbox.group,
+#main.skins-new fieldset.listbox.group *,
+#main.skins-edit fieldset.listbox.group * {
+  overflow: visible !important;
+  z-index: 1 !important;
+}
+
+#main.skins-new ul.autocomplete,
+#main.skins-edit ul.autocomplete,
+#main.skins-new ul.autocomplete li.input,
+#main.skins-edit ul.autocomplete li.input,
+#main.skins-new div.autocomplete.dropdown,
+#main.skins-edit div.autocomplete.dropdown {
+  max-height: none !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 999999 !important;
+}
+
+#main.skins-new div.autocomplete.dropdown,
+#main.skins-edit div.autocomplete.dropdown {
+  background: var(--card-bg) !important;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.35) !important;
+  display: block !important;
+  position: absolute !important;
+}
+
+/* Text inputs, textareas, selects */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+input[type="number"],
+input[type="search"],
+textarea,
+select {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text) !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent-1) !important;
+  box-shadow: 0 0 0 2px rgba(126,172,181,0.25) !important;
+  outline: none !important;
+}
+
+/* Main form containers */
+fieldset,
+form dl,
+fieldset dl dl,
+fieldset fieldset fieldset,
+fieldset fieldset dl dl,
+dd.hideme,
+form blockquote.userstuff {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-left: 6px solid var(--accent-1) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05) !important;
+  display: block;
+  margin: 0.643em;
+}
+
+/* Transparent overrides */
+fieldset dl,
+fieldset.actions,
+fieldset dl fieldset dl {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  clear: right;
+}
+
+/* Nested fieldsets */
+fieldset fieldset,
+fieldset dl dl,
+form blockquote.userstuff {
+  background: #fdfaf2 !important;
+  border: 1px dashed var(--border) !important;
+  clear: right;
+  margin: 0.5em 0 !important;
+  padding: 0.8em !important;
+}
+
+/* Metadata & descriptions spacing */
+fieldset dd dl,
+form .meta dd,
+fieldset dl fieldset dl,
+dd fieldset {
+  color: var(--text);
+  margin: 0.8em 0 !important;
+}
+
+/* Required field labels */
+dt.required > label,
+dt.required > label:first-child {
+  color: var(--accent-1-dark) !important;
+  font-weight: 700 !important;
+}
+
+legend.required {
+  color: var(--text-on-dark) !important;
+}
+
+p.required.notice {
+  background: linear-gradient(135deg, var(--crimson-dark) 0%, var(--crimson-dark) 60%, var(--crimson) 100%) !important;
+  border-left: none !important;
+  border-radius: 4px !important;
+  color: var(--text-on-dark) !important;
+  display: inline-block !important;
+  font-size: 0.85em !important;
+  font-weight: 700 !important;
+  padding: 3px 14px !important;
+}
+
+
+/* ============================================
+   9. TAG SYSTEM
+   ============================================ */
+
+/* Common tag shape */
+a.tag {
+  border-radius: var(--radius-sm) !important;
+  box-sizing: border-box !important;
+  display: inline-block !important;
+  font-size: 12px !important;
+  padding: 2px 8px !important;
+  white-space: nowrap;
+}
+
+/* Tag list wrapping */
+#workskin .tags li::after {
+  display: inline-block;
+  line-height: 1.6;
+  margin: 0 .15em .3em 0;
+  max-width: 100%;
+}
+
+/* Remove commas */
+.tags li::after,
+.work .fandom.heading li::after,
+.fandoms.heading li::after,
+.work .character.heading li::after,
+.characters.heading li::after,
+.work .relationship.heading li::after,
+.relationships.heading li::after,
+.work .freeform.heading li::after,
+.freeforms.heading li::after,
+.work .warning.heading li::after,
+.warnings.heading li::after,
+.work .category.heading li::after,
+.category.heading li::after,
+ul.tags li::after,
+ul.commas li::after {
+  content: "" !important;
+  display: none !important;
+}
+
+/* Hide fandom heading colour bleed */
+.work .fandom.heading,
+.fandoms.heading { color: transparent !important; font-size: 0 !important; }
+
+/* Tag overflow on narrow screens */
+.fandom a.tag, .fandoms a.tag, .work .fandom a.tag,
+.relationships .tag, .work .relationships a.tag, dl.meta dd.relationship a.tag,
+.character .tag, .work .character a.tag, dl.meta dd.character a.tag,
+.characters .tag, .work .characters a.tag,
+.rating .tag, .work .rating a.tag, dl.meta dd.rating a.tag,
+.warnings a.tag, dl.meta dd.warnings a.tag,
+.warning a.tag, dl.meta dd.warning a.tag,
+.freeform .tag, .work .freeform a.tag,
+.freeforms .tag, .work .freeforms a.tag {
+  display: inline-block;
+  max-width: 45vw;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* 1. Fandom tags — teal base, crimson hover (matches v1) */
+.fandom a.tag, .fandoms a.tag, .work .fandom a.tag,
+h5.fandoms.heading a, h5.fandoms.heading a:visited,
+dl.meta dd.fandom a,
+h2.heading a.tag, h2.heading a.tag:visited {
+  background: var(--tag-fandom-bg) !important;
+  border-radius: 4px !important;
+  color: var(--card-bg) !important;
+  display: inline-block !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  margin: 0 .15em .3em 0 !important;
+  padding: 2px 10px !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.fandom a.tag:hover, .work .fandom a.tag:hover, .work .fandoms a.tag:hover,
+.fandoms.heading a:hover,
+.fandoms a:hover, h5.fandoms.heading a:hover, dl.meta dd.fandom a:hover,
+h2.heading a.tag:hover {
+  background: var(--tag-fandom-hover-bg) !important;
+  border-color: var(--panel-bg) !important;
+  box-shadow: 0 2px 4px rgba(191,70,70,0.2) !important;
+  color: var(--white) !important;
+  text-decoration: none !important;
+}
+
+/* 2. Relationship tags — crimson */
+.relationships .tag, .work .relationships a.tag, dl.meta dd.relationship a,
+.relationships a, .relationships a:visited,
+.relationships a.tag, .relationships a.tag:visited {
+  background: var(--tag-relationship-bg) !important;
+  color: var(--white) !important;
+  font-size: 0.85rem !important;
+  margin: 0 .15em .3em 0 !important;
+}
+
+.relationships a.tag:hover, .work .relationships a.tag:hover,
+dl.meta dd.relationship a.tag:hover, .relationships a:hover {
+  background: var(--tag-relationship-hover-bg) !important;
+  box-shadow: 0 2px 4px rgba(139,38,38,0.3) !important;
+  color: var(--white) !important;
+  text-decoration: none !important;
+}
+
+/* 3. Character tags — flat teal, teal gradient hover (matches v1) */
+.character .tag, .work .character a.tag, dl.meta dd.character a,
+.characters .tag, .work .characters a.tag,
+.characters a, .characters a:visited,
+.characters a.tag, .characters a.tag:visited {
+  background: var(--tag-character-bg) !important;
+  color: var(--white) !important;
+  font-size: 0.85rem !important;
+  margin: 0 .15em .3em 0 !important;
+}
+
+.characters a.tag:hover, .work .characters a.tag:hover,
+.character a.tag:hover, dl.meta dd.character a.tag:hover,
+.characters a:hover {
+  background: var(--tag-character-hover-bg) !important;
+  box-shadow: 0 2px 4px rgba(126,172,181,0.3) !important;
+  color: var(--card-bg) !important;
+  text-decoration: none !important;
+}
+
+/* 4. Freeform tags — beige with crimson top (matches v1) */
+.freeform .tag, .work .freeform a.tag,
+.freeforms .tag, .work .freeforms a.tag,
+.freeforms a, .freeform a,
+.freeforms a:visited, .freeform a:visited,
+.freeforms strong a, .freeform strong a,
+li.freeforms a, li.freeform a,
+dl.meta dd.freeform a {
+  background: var(--tag-freeform-bg) !important;
+  border-bottom: 1px solid var(--tag-freeform-border) !important;
+  border-left: 1px solid var(--tag-freeform-border) !important;
+  border-radius: 0 0 4px 4px !important;
+  border-right: 1px solid var(--tag-freeform-border) !important;
+  border-top: 3px solid var(--crimson) !important;
+  color: var(--text) !important;
+  display: inline-block !important;
+  font-size: 10px !important;
+  font-weight: normal !important;
+  margin: 0 4px 6px 0 !important;
+  padding: 3px 8px 2px 8px !important;
+}
+
+.freeforms a.tag:hover, .work .freeforms a.tag:hover,
+dl.meta dd.freeform a.tag:hover, .freeforms a:hover, .freeform a:hover {
+  background: var(--tag-freeform-hover-bg) !important;
+  border-top-color: var(--card-bg) !important;
+  box-shadow: 0 2px 4px rgba(126,172,181,0.3) !important;
+  color: var(--card-bg) !important;
+  text-decoration: none !important;
+}
+
+/* 5. Rating & warning tags — parchment with teal spine (matches v1) */
+.rating .tag, .work .rating a.tag, dl.meta dd.rating a,
+.warnings a.tag, dl.meta dd.warnings a.tag,
+.warning a.tag, dl.meta dd.warning a.tag,
+li.warnings a, li.warnings strong a, li.warning a, li.warning strong a,
+dl.work.meta.group dd.warning a, dl.work.meta.group dd.warning a:visited,
+dl.work.meta.group dd.warnings a, dl.work.meta.group dd.warnings a:visited,
+dl.work.meta.group dd.rating a, dl.work.meta.group dd.rating a:visited {
+  background: var(--tag-warning-bg) !important;
+  border: 1px solid var(--tag-warning-border) !important;
+  border-left: 4px solid var(--tag-warning-spine) !important;
+  border-radius: 4px !important;
+  color: var(--text) !important;
+  display: inline-block !important;
+  font-size: 11px !important;
+  font-weight: normal !important;
+  margin: 0 .15em .3em 0 !important;
+  padding: 1px 8px 1px 6px !important;
+  text-transform: uppercase;
+}
+
+.work .rating a.tag:hover, .work .warning a.tag:hover,
+dl.meta dd.warning a.tag:hover, dl.meta dd.rating a.tag:hover,
+li.warnings a:hover, li.warning a:hover,
+dl.work.meta.group dd.warning a:hover,
+dl.work.meta.group dd.warnings a:hover,
+dl.work.meta.group dd.rating a:hover {
+  background: var(--panel-bg) !important;
+  border-left-color: var(--crimson) !important;
+  color: var(--crimson) !important;
+}
+
+/* Rating-specific left border colors */
+.rating-explicit .tag, .rating-explicit a.tag,
+.rating-mature .tag, .rating-mature a.tag,
+.warnings a.tag { border-left-color: var(--crimson) !important; }
+
+a.tag[href*="none_apply"] { border-left-color: var(--accent-1) !important; }
+
+
+/* ============================================
+   10. WORK BLURB CARDS
+   ============================================ */
+
+/* Hide fandom comma separators */
+.work .fandom.heading,
+.fandoms.heading { color: transparent !important; }
+
+/* Fandoms list — start below required-tags float, flush left (splash blurbs only) */
+.splash li.blurb h5.fandoms.heading {
+  clear: left !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* Work / bookmark / series / collection cards */
+li.blurb,
+li.work,
+li.external,
+li.work.blurb,
+li.bookmark.blurb,
+li.series.blurb,
+li.collection.blurb.group,
+.userstuff.summary,
+.splash .news li {
+  background: linear-gradient(to bottom, var(--card-bg) 0%, var(--panel-bg) 100%) !important;
+  border-bottom: 2px solid #bf4646 !important;
+  border-left: 8px solid #7eacb5 !important;
+  border-radius: 4px 12px 4px 12px !important;
+  box-shadow: 6px 6px 0px rgba(126,172,181,0.2), 10px 10px 20px rgba(0,0,0,0.1) !important;
+  margin-bottom: 2em !important;
+  padding: 20px !important;
+  text-align: left !important;
+}
+
+
+
+/* Summary blockquote nested inside blurb cards */
+li.work.blurb blockquote.userstuff.summary,
+li.bookmark.blurb blockquote.userstuff.summary,
+li.series.blurb blockquote.userstuff.summary {
+  border-left: 3px solid #7eacb5 !important;
+  color: var(--text) !important;
+  font-style: italic !important;
+  padding: 0.25em 0.5em !important;
+}
+
+
+
+/* Datetime — use AO3 default positioning (absolute top-right via blurb CSS) */
+li.work.blurb p.datetime,
+li.bookmark.blurb p.datetime,
+li.series.blurb p.datetime {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Helvetica, sans-serif !important;
+  font-size: 0.1em !important;
+  padding-right: 6px !important;
+  padding-top: 4px !important;
+}
+
+/* Fic title links */
+#main li.work.blurb h4.heading a,
+#main li.work.blurb h4.heading a:link,
+li.work.blurb .header.module h4.heading a,
+li.work.blurb .header.module h4.heading a:link,
+#main li.bookmark.blurb h4.heading a,
+#main li.bookmark.blurb h4.heading a:link,
+li.bookmark.blurb .header.module h4.heading a,
+li.bookmark.blurb .header.module h4.heading a:link,
+#main li.series.blurb h4.heading a,
+#main li.series.blurb h4.heading a:link,
+li.series.blurb .header.module h4.heading a,
+li.series.blurb .header.module h4.heading a:link,
+li.own.collection.picture.blurb.group h4.heading a,
+li.own.collection.picture.blurb.group h4.heading a:link,
+li.collection.picture.blurb.group h4.heading a,
+li.collection.picture.blurb.group h4.heading a:link  {
+  border-bottom: none !important;
+  color: var(--crimson-dark) !important;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  font-weight: 400 !important;
+}
+
+/* Author link inside blurb h4 — mid teal */
+#main li.blurb h4.heading a[rel="author"],
+#main li.blurb h4.heading a[rel="author"]:link,
+#main li.reading.work.blurb h4.heading a[rel="author"],
+#main li.reading.work.blurb h4.heading a[rel="author"]:link {
+  color: var(--accent-1-mid) !important;
+  font-style: italic !important;
+  font-weight: normal !important;
+}
+
+#main li.blurb h4.heading a[rel="author"]:visited,
+#main li.reading.work.blurb h4.heading a[rel="author"]:visited {
+  color: var(--accent-1-mid) !important;
+  font-style: italic !important;
+}
+
+#main li.blurb h4.heading a[rel="author"]:hover,
+#main li.reading.work.blurb h4.heading a[rel="author"]:hover {
+  color: var(--accent-1-dark) !important;
+  text-decoration: underline !important;
+}
+
+#main li.work.blurb h4.heading a:visited:not([rel="author"]),
+li.work.blurb .header.module h4.heading a:visited:not([rel="author"]),
+#main li.reading.work.blurb h4.heading a:visited:not([rel="author"]),
+#main li.bookmark.blurb h4.heading a:visited:not([rel="author"]),
+li.bookmark.blurb .header.module h4.heading a:visited:not([rel="author"]),
+#main li.series.blurb h4.heading a:visited:not([rel="author"]),
+li.series.blurb .header.module h4.heading a:visited:not([rel="author"]),
+li.own.collection.picture.blurb.group h4.heading a:visited:not([rel="author"]),
+li.collection.picture.blurb.group h4.heading a:visited:not([rel="author"]) {
+  color: inherit !important;
+}
+
+#main li.work.blurb h4.heading a:hover,
+li.work.blurb .header.module h4.heading a:hover,
+#main li.bookmark.blurb h4.heading a:hover,
+li.bookmark.blurb .header.module h4.heading a:hover,
+#main li.series.blurb h4.heading a:hover,
+li.series.blurb .header.module h4.heading a:hover,
+li.own.collection.picture.blurb.group h4.heading a:hover,
+li.collection.picture.blurb.group h4.heading a:hover {
+  color: var(--accent-1-dark) !important;
+  text-decoration: underline !important;
+}
+
+/* Metadata box (stationery card style) */
+dl.meta,
+.blurb dl.meta {
+  background: radial-gradient(circle, var(--card-bg) 0%, var(--panel-bg) 60%, var(--border) 100%) !important;
+  border: 4px solid var(--accent-1) !important;
+  border-radius: 10px !important;
+  box-shadow: inset 2px 2px 10px rgba(0,0,0,0.05) !important;
+  margin: 20px 0 !important;
+  outline: 1px solid var(--card-bg) !important;
+  padding: 15px !important;
+}
+
+dl.meta dt {
+  color: var(--crimson) !important;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+dl.meta dd {
+  color: var(--text) !important;
+  margin-bottom: 5px;
+}
+
+.blurb .heading { text-align: left; }
+.blurb .heading a,
+.blurb .heading a:link {
+  border-bottom: none !important;
+  color: var(--crimson-dark) !important;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  font-weight: 400 !important;
+  margin-top: 0.6em !important;
+  text-align: left;
+}
+
+.blurb .heading a:visited {
+  color: var(--crimson-dark) !important;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  font-weight: 400 !important;
+}
+
+.blurb .heading a:hover {
+  color: var(--accent-1-dark) !important;
+  text-decoration: underline !important;
+}
+
+.blurb .stats dt,
+.blurb .stats dd { color: #3d6a73 !important; }
+
+
+
+
+
+
+
+
+
+
+
+/* Bookmarker's tags — warm oxblood outline, distinct from work tags */
+.bookmark .user ul.meta a.tag,
+.bookmark .user ul.meta a.tag:visited {
+  background: rgba(139,38,38,0.08) !important;
+  border: 1px solid rgba(139,38,38,0.35) !important;
+  border-radius: 4px !important;
+  color: var(--crimson-dark) !important;
+  display: inline-block !important;
+  font-size: 11px !important;
+  font-style: italic !important;
+  margin: 0 0.2em 0.3em 0 !important;
+  padding: 1px 7px !important;
+  transition: all 0.2s ease !important;
+}
+
+.bookmark .user ul.meta a.tag:hover {
+  background: rgba(139,38,38,0.18) !important;
+  border-color: var(--crimson-dark) !important;
+  color: var(--link-visited) !important;
+  text-decoration: none !important;
+}
+
+/* Lift cards on hover */
+li.work.blurb:hover,
+li.bookmark.blurb:hover,
+li.series.blurb:hover,
+li.own.collection.picture.blurb.group:hover,
+li.skins.own.picture.blurb.group:hover,
+li.collection.picture.blurb.group:hover {
+  box-shadow: 6px 6px 0px rgba(191,70,70,0.25), 10px 10px 24px rgba(0,0,0,0.15) !important;
+}
+
+/* Description blockquote on skins/collection blurb cards */
+li.skins.own.picture.blurb.group blockquote.userstuff.summary,
+li.own.collection.picture.blurb.group blockquote.userstuff.summary,
+li.collection.picture.blurb.group blockquote.userstuff.summary {
+  background: linear-gradient(to bottom, var(--card-bg) 0%, var(--panel-bg) 100%) !important;
+  border-bottom: 2px solid #bf4646 !important;
+  border-left: 8px solid #7eacb5 !important;
+  border-radius: 4px 12px 4px 12px !important;
+  box-shadow: 6px 6px 0px rgba(126,172,181,0.2), 10px 10px 20px rgba(0,0,0,0.1) !important;
+  color: var(--text) !important;
+  margin-bottom: 2em !important;
+  padding: 20px !important;
+}
+
+/* Skins card — add padding matching v1 blurb card */
+li.skins.own.picture.blurb.group {
+  padding: 20px !important;
+}
+
+li.skins.own.picture.blurb.group ul.actions {
+  margin-top: 0.5em !important;
+  padding: 0 !important;
+}
+
+/* Spacing for own collection card body elements */
+li.own.collection.picture.blurb.group .type,
+li.own.collection.picture.blurb.group dl.stats,
+li.own.collection.picture.blurb.group ul.actions {
+  margin-left: 1em !important;
+  margin-right: 1em !important;
+}
+
+li.own.collection.picture.blurb.group .type {
+  color: var(--text-muted) !important;
+  font-size: 0.9em !important;
+  font-style: italic !important;
+  margin-top: 0.5em !important;
+  padding: 0.25em 0 !important;
+}
+
+li.own.collection.picture.blurb.group dl.stats {
+  border-top: 1px solid rgba(126,172,181,0.3) !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin-top: 0.5em !important;
+  padding: 0.5em 0 !important;
+}
+
+li.own.collection.picture.blurb.group dl.stats dt {
+  color: var(--crimson) !important;
+  font-weight: bold !important;
+  margin-right: 0.25em !important;
+}
+
+li.own.collection.picture.blurb.group dl.stats dd {
+  color: var(--text) !important;
+  margin-right: 1.2em !important;
+}
+
+li.own.collection.picture.blurb.group ul.actions {
+  margin-bottom: 0.75em !important;
+  margin-top: 0.5em !important;
+  padding: 0 !important;
+}
+
+/* Own-work action buttons */
+li.own.work.blurb ul.actions a:hover,
+li.own.work.blurb ul.actions input[type="submit"]:hover,
+li.work.blurb.own ul.actions a:hover,
+li.work.blurb.own ul.actions input[type="submit"]:hover {
+  background: var(--accent-1) !important;
+  border-color: var(--btn-hover-border) !important;
+  color: var(--text-on-dark) !important;
+}
+
+/* Dimmed read blurbs */
+li.work.blurb.read.group { opacity: 0.75 !important; }
+
+/* Inspired by / has inspired dl */
+dl.inspired.index.group {
+  background: var(--panel-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  border-top: 3px solid var(--accent-1) !important;
+  margin-bottom: 1em !important;
+  padding: 0.75em 1em !important;
+}
+
+dl.inspired.index.group dt.parent {
+  border-bottom: 1px solid var(--border-light) !important;
+  color: var(--accent-1-dark) !important;
+  font-size: 0.85em !important;
+  font-style: italic !important;
+  padding: 0.4em 0 0.2em 0 !important;
+}
+
+dl.inspired.index.group dd.child {
+  background: var(--panel-bg) !important;
+  border-left: 2px solid var(--border-light) !important;
+  color: var(--text) !important;
+  margin: 0.2em 0 0.5em 0.5em !important;
+  padding: 0.3em 0 0.3em 1em !important;
+}
+
+
+/* ============================================
+   11. WORK PAGE
+   ============================================ */
+
+/* Work body / chapter text container */
+#workskin,
+#workskin * {
+  font-family: 'Goudy Bookletter 1911', serif !important;
+}
+
+#workskin {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(90deg, #ECD0AD, #7EADB5) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.07) !important;
+  box-sizing: border-box;
+  color: var(--text) !important;
+  font-size: 1.1em;
+  font-variant-ligatures: common-ligatures;
+  margin: 0 auto !important;
+  max-width: 95%;
+  padding: 2% 4%;
+  text-align: left !important;
+}
+
+/* userstuff — parchment chapter card */
+.system .userstuff,
+.news .userstuff {
+  background-color: var(--card-bg) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.07) !important;
+  box-sizing: border-box !important;
+  line-height: 1.85 !important;
+  overflow: hidden !important;
+  padding-bottom: 30px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  padding-top: 30px !important;
+  width: 100% !important;
+}
+
+/* Override AO3's .userstuff h3 border/padding across all contexts */
+.admin .userstuff h3,
+.faq .userstuff h3,
+.system .userstuff h3,
+.docs .userstuff h3 {
+  border: none !important;
+  color: var(--accent-1-dark) !important;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  padding: 0 0 0.4em 0 !important;
+  position: relative !important;
+}
+
+.admin .userstuff,
+.faq .userstuff,
+.system .userstuff,
+.docs .userstuff {
+  text-align: left !important;
+}
+
+.admin .userstuff h3::after,
+.faq .userstuff h3::after,
+.system .userstuff h3::after,
+.docs .userstuff h3::after {
+  background: linear-gradient(90deg, #bf4646, #7eacb5) !important;
+  border-radius: 2px !important;
+  content: "" !important;
+  display: block !important;
+  height: 2px !important;
+  margin: 0.3em 0 0 0 !important;
+  width: 4em !important;
+}
+
+#workskin .userstuff {
+  background-color: var(--card-bg) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.07) !important;
+  box-sizing: border-box !important;
+  color: var(--text) !important;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.85 !important;
+  margin: 3em auto !important;
+  max-width: 100%;
+  padding: 2em 4% !important;
+}
+
+/* No border-bottom on headings inside work text */
+#workskin h3.heading,
+#chapters h3.heading {
+  border-bottom: none !important;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+}
+
+#workskin h1, #workskin h2, #workskin h3,
+#workskin h4, #workskin h5, #workskin h6,
+#chapters h1, #chapters h2, #chapters h3,
+#chapters h4, #chapters h5, #chapters h6 {
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  font-weight: 700 !important;
+}
+
+#workskin h1 { font-size: 2em !important; line-height: 1.2; }
+#workskin h2 { font-size: 1.65em !important; line-height: 1.25; }
+#workskin h3 { font-size: 1.35em !important; line-height: 1.3; }
+#workskin h4 { font-size: 1.15em !important; }
+#workskin h1, #workskin h2, #workskin h3 { word-wrap: break-word; }
+
+/* Gradient text on h1 inside work/chapter text */
+#workskin h1:not(.landmark),
+#chapters h1:not(.landmark) {
+  background: linear-gradient(135deg, var(--crimson) 0%, var(--accent-1) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  font-size: 2em !important;
+  letter-spacing: 0.01em !important;
+  margin-bottom: 0.4em !important;
+  padding-bottom: 0.2em !important;
+  position: relative !important;
+}
+
+#workskin h1:not(.landmark)::after,
+#chapters h1:not(.landmark)::after {
+  background: linear-gradient(90deg, #bf4646, #7eacb5) !important;
+  border-radius: 2px !important;
+  content: "" !important;
+  display: block !important;
+  height: 2px !important;
+  margin-top: 0.2em !important;
+  width: 100% !important;
+}
+
+/* Chapter heading */
+#workskin h2.heading {
+  color: var(--crimson-dark) !important;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  font-size: 1.8em !important;
+  font-style: italic;
+  font-weight: normal !important;
+  margin-bottom: 2em !important;
+  text-align: center;
+}
+
+/* Subheaders within story */
+#workskin .userstuff h3 {
+  border: none !important;
+  color: var(--accent-1) !important;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  font-size: 1.1em !important;
+  letter-spacing: 2px;
+  margin-top: 2em !important;
+  padding: 0 0 0.4em 0 !important;
+  position: relative !important;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#workskin .userstuff h3::after {
+  background: linear-gradient(90deg, #bf4646, #7eacb5) !important;
+  border-radius: 2px !important;
+  content: "" !important;
+  display: block !important;
+  height: 2px !important;
+  margin: 0.3em auto 0 !important;
+  width: 4em !important;
+}
+
+/* Drop cap */
+#workskin .userstuff > p:first-of-type::first-letter {
+  color: var(--crimson-dark);
+  float: left;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  font-size: 3em;
+  line-height: 0.8;
+  margin-right: 0.1em;
+  margin-top: 0.1em;
+}
+
+/* First line small caps */
+#workskin .userstuff > p:first-of-type::first-line {
+  font-variant: small-caps;
+  letter-spacing: 1px;
+}
+
+/* Chapter title */
+#workskin .chapter .title,
+#workskin .title {
+  color: var(--crimson) !important;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  font-size: 2em !important;
+  font-weight: normal !important;
+  letter-spacing: 0.04em;
+  margin: 0.5em 0 1.5em 0 !important;
+  text-align: center !important;
+  text-shadow: 0 1px 0 rgba(255,244,234,0.6);
+}
+
+#workskin .chapter .title::after,
+#workskin .title::after {
+  border-bottom: 1px solid rgba(126,172,181,0.45) !important;
+  color: var(--accent-1) !important;
+  content: "";
+  display: block !important;
+  font-size: 0.9em !important;
+  margin: 1em auto 2em auto !important;
+  width: 60%;
+}
+
+/* Work metadata sidebar (tags, rating, warnings, stats) */
+dl.work.meta.group {
+  background: linear-gradient(135deg, var(--card-bg) 0%, var(--panel-bg) 50%, #f0f8f9 100%) !important;
+  border: 1px solid #cbb49a !important;
+  border-left: 8px solid #7eacb5 !important;
+  border-radius: 4px 12px 4px 12px !important;
+  box-shadow: 6px 6px 0px rgba(126,172,181,0.2), 0 2px 12px rgba(0,0,0,0.07) !important;
+  margin: 20px 0 !important;
+  overflow-wrap: break-word !important;
+  padding: 15px !important;
+}
+
+dl.work.meta.group dt {
+  color: var(--crimson) !important;
+  font-weight: bold !important;
+  letter-spacing: 0.5px !important;
+  padding-top: 0.4em !important;
+  text-transform: uppercase !important;
+}
+
+dl.work.meta.group dt a,
+dl.work.meta.group dt a:link,
+dl.work.meta.group dt a:visited {
+  background: none !important;
+  border-bottom: none !important;
+  color: var(--crimson) !important;
+  text-decoration: none !important;
+}
+
+dl.work.meta.group dt a:hover {
+  color: var(--crimson-dark) !important;
+  text-decoration: underline !important;
+}
+
+dl.work.meta.group dd {
+  color: var(--text) !important;
+  margin-bottom: 5px !important;
+}
+
+/* Strip dd border/padding from tag containers so tags lay out correctly */
+dl.work.meta.group dd.rating,
+dl.work.meta.group dd.warning,
+dl.work.meta.group dd.warnings,
+dl.work.meta.group dd.category,
+dl.work.meta.group dd.fandom,
+dl.work.meta.group dd.fandoms,
+dl.work.meta.group dd.character,
+dl.work.meta.group dd.characters,
+dl.work.meta.group dd.relationship,
+dl.work.meta.group dd.relationships,
+dl.work.meta.group dd.freeform,
+dl.work.meta.group dd.freeforms {
+  border-left: none !important;
+  padding-left: 0 !important;
+}
+
+/* Category tags — crimson-to-teal diagonal, distinct from all other tag types */
+dl.work.meta.group dd.category a,
+dl.work.meta.group dd.category a:visited,
+.category a.tag, .category a.tag:visited {
+  background: linear-gradient(135deg, var(--crimson) 0%, var(--accent-1) 100%) !important;
+  border-radius: 4px !important;
+  color: var(--white) !important;
+  display: inline-block !important;
+  font-size: 12px !important;
+  margin: 0 .15em .3em 0 !important;
+  padding: 2px 8px !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+dl.work.meta.group dd.category a:hover,
+.category a.tag:hover {
+  background: linear-gradient(135deg, var(--accent-1) 0%, var(--crimson) 100%) !important;
+  box-shadow: 0 2px 4px rgba(126,172,181,0.3) !important;
+  color: var(--white) !important;
+  text-decoration: none !important;
+}
+
+/* Force tag link colors on work page — beats the generic dd { color: var(--text) } rule */
+dl.work.meta.group dd.fandom a, dl.work.meta.group dd.fandoms a { color: var(--card-bg) !important; }
+dl.work.meta.group dd.character a, dl.work.meta.group dd.characters a { color: var(--white) !important; }
+dl.work.meta.group dd.relationship a, dl.work.meta.group dd.relationships a { color: var(--white) !important; }
+dl.work.meta.group dd.freeform a, dl.work.meta.group dd.freeforms a { color: var(--text) !important; }
+
+dl.work.meta.group dd.stats dl.stats {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+dl.work.meta.group dd.stats dl.stats dt {
+  background: none !important;
+  color: var(--accent-1-mid) !important;
+  font-size: 0.8em !important;
+  font-weight: 700 !important;
+  padding: 0 !important;
+  text-transform: uppercase !important;
+}
+
+dl.work.meta.group dd.stats dl.stats dd {
+  background: none !important;
+  border-bottom: none !important;
+  color: var(--text) !important;
+  font-weight: bold !important;
+  padding: 0 !important;
+}
+
+/* Preface block */
+#workskin .preface.group,
+.work.meta.group ~ .preface.group,
+#chapters .preface.group {
+  background: var(--panel-bg) !important;
+  border: 1px solid var(--border-light) !important;
+  border-left: 3px solid var(--accent-1) !important;
+  border-radius: var(--radius-md) !important;
+  margin-bottom: 1.2em !important;
+  padding: 0.75em 1em !important;
+}
+
+/* Work title on the fic page */
+.preface.group h2.title.heading,
+#workskin h2.title {
+  border-bottom: none !important;
+  color: var(--crimson) !important;
+  font-size: 1.6em !important;
+  font-weight: 800 !important;
+  margin-bottom: 0.1em !important;
+}
+
+/* Summary block */
+.preface.group .summary.module {
+  background: linear-gradient(135deg, #fff8f0 0%, var(--card-bg) 50%, #f0f8f9 100%) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--radius-md) !important;
+  border-top: 3px solid var(--crimson) !important;
+  box-shadow: 0 2px 10px rgba(126,172,181,0.2) !important;
+  margin: 0.4em 0 !important;
+  padding: 0.45em 0.75em !important;
+}
+
+.preface.group .summary.module h3.heading {
+  border-bottom: none !important;
+  color: var(--crimson) !important;
+  font-size: 0.75em !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  margin-bottom: 0.2em !important;
+  text-transform: uppercase !important;
+}
+
+.preface.group .summary.module blockquote.userstuff {
+  background: none !important;
+  border: none !important;
+  color: var(--text) !important;
+  font-size: 0.9em !important;
+  font-style: italic !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Align summary/notes labels left */
+.preface .summary .heading,
+.preface .notes .heading,
+.appendix .notes .heading {
+  text-align: left !important;
+  width: 100% !important;
+}
+
+/* Notes blocks */
+#workskin .preface,
+#workskin .notes {
+  background-color: var(--card-bg) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.07) !important;
+  box-sizing: border-box !important;
+  margin: 2em auto !important;
+  padding: 1.5em 4% !important;
+}
+
+.preface.group .notes.module,
+.end.notes.module {
+  background-color: var(--card-bg) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.07) !important;
+  box-sizing: border-box !important;
+  margin: 2em auto !important;
+  padding: 1.5em 4% !important;
+}
+
+.preface.group .notes.module h3.heading,
+.end.notes.module h3.heading {
+  border-bottom: none !important;
+  color: var(--accent-1-mid) !important;
+  font-size: 0.75em !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  margin-bottom: 0.2em !important;
+  text-transform: uppercase !important;
+}
+
+/* Notes blockquote */
+#workskin .notes blockquote,
+#workskin .preface blockquote {
+  background: none !important;
+  border-left: 1px solid rgba(0,0,0,0.15) !important;
+  margin: 0.8em 0 !important;
+  padding-left: 0.8em !important;
+}
+
+/* Author byline on work page */
+h3.byline.heading,
+div.preface .byline,
+.preface.group .byline {
+  color: var(--text-muted) !important;
+  font-size: 1em !important;
+  font-style: italic !important;
+  font-weight: normal !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Inject "by" before the author link */
+h3.byline.heading::before {
+  color: var(--text-muted) !important;
+  content: "by " !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+}
+
+h3.byline.heading a, h3.byline.heading a:link,
+div.preface .byline a, div.preface .byline a:link,
+.preface.group .byline a, .preface.group .byline a:link {
+  border-bottom: none !important;
+  color: var(--accent-1-dark) !important;
+  font-style: italic !important;
+}
+
+h3.byline.heading a:visited,
+div.preface .byline a:visited,
+.preface.group .byline a:visited {
+  border-bottom: none !important;
+  color: var(--accent-1-mid) !important;
+  font-style: italic !important;
+}
+
+h3.byline.heading a:hover,
+div.preface .byline a:hover,
+.preface.group .byline a:hover {
+  color: var(--accent-1-dark) !important;
+  text-decoration: underline !important;
+}
+
+/* Work action bar */
+#workskin ~ .work.navigation.actions,
+.work.navigation.actions {
+  align-items: center !important;
+  background: none !important;
+  border: none !important;
+  border-radius: var(--radius-md) !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin: 1em 0 !important;
+  padding: 0.5em 0.75em !important;
+}
+
+#workskin ~ .work.navigation.actions li,
+.work.navigation.actions li { margin: 0.2em 0.3em !important; }
+
+/* Kudos bar */
+#kudos {
+  background: linear-gradient(to bottom, var(--card-bg) 0%, var(--panel-bg) 100%) !important;
+  border-bottom: 2px solid #bf4646 !important;
+  border-left: 8px solid #7eacb5 !important;
+  border-radius: 4px 12px 4px 12px !important;
+  box-shadow: 6px 6px 0px rgba(126,172,181,0.2), 10px 10px 20px rgba(0,0,0,0.1) !important;
+  margin: 1.5em 1em !important;
+  padding: 20px !important;
+  text-align: left !important;
+}
+
+#kudos p { color: var(--text) !important; }
+#kudos a { color: var(--link) !important; font-weight: 500 !important; }
+#kudos a:hover { color: var(--accent-1-dark) !important; }
+
+/* Own-work action buttons on work page */
+li.own.work.blurb ul.actions a,
+li.own.work.blurb ul.actions a:visited,
+li.own.work.blurb ul.actions input[type="submit"],
+li.work.blurb.own ul.actions a,
+li.work.blurb.own ul.actions a:visited,
+li.work.blurb.own ul.actions input[type="submit"] {
+  background: linear-gradient(to bottom, var(--crimson) 0%, var(--crimson-mid) 100%) !important;
+  border-bottom: none !important;
+  border-color: var(--btn-border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-on-dark) !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+  font-size: 0.9em !important;
+  font-weight: 600 !important;
+  padding: 4px 12px !important;
+  text-decoration: none !important;
+}
+
+/* Hide empty paragraphs in chapter text */
+#chapters p:empty,
+#workskin p:empty {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+/* ============================================
+   12. COMMENTS
+   ============================================ */
+
+/* Comment cards — matches v1 */
+div.comment,
+li.comment {
+  background: linear-gradient(to bottom, var(--card-bg) 0%, var(--panel-bg) 100%) !important;
+  border-bottom: 2px solid #bf4646 !important;
+  border-left: 8px solid #7eacb5 !important;
+  border-radius: 4px 12px 4px 12px !important;
+  box-shadow: 6px 6px 0px rgba(126,172,181,0.2), 10px 10px 20px rgba(0,0,0,0.1) !important;
+  margin-bottom: 2em !important;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding: 20px !important;
+}
+
+/* Alternating odd comments — manuscript style */
+.thread .odd {
+  background-color: transparent;
+  border-left: 4px solid #bf4646 !important;
+  border-radius: 8px;
+  margin: 0;
+}
+
+/* Comment icon */
+.comment div.icon {
+  background: linear-gradient(180deg, var(--card-bg) 0%, #e6f3f5 100%);
+  border-bottom: 5px solid #bf4646;
+  border-radius: 6px;
+  float: left;
+  margin: 0.2em 0.6em inherit 0;
+  width: 100px;
+}
+
+/* Comment byline */
+.comment h4.byline {
+  background: linear-gradient(90deg, var(--panel-bg) 0%, var(--card-bg) 60%, #e6f3f5 100%);
+  border-bottom: 1px solid var(--accent-1);
+  color: var(--crimson-dark);
+  margin-bottom: -0.90em;
+  margin-left: 100px;
+  padding: 0.35em 0.16em;
+  text-shadow: 0 1px 0 rgba(255,244,234,0.6);
+}
+
+/* Comment action buttons */
+li.comment .actions a,
+li.comment .actions a:visited {
+  background: linear-gradient(to bottom, var(--crimson) 0%, var(--crimson-mid) 100%) !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-on-dark) !important;
+  display: inline-block !important;
+  font-size: 0.8em !important;
+  font-weight: 600 !important;
+  margin: 2px !important;
+  padding: 3px 10px !important;
+  text-decoration: none !important;
+}
+
+li.comment .actions a:hover {
+  background: var(--accent-1) !important;
+  color: var(--text-on-dark) !important;
+}
+
+li.comment .actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  list-style: none !important;
+  margin: 0.5em 0 0 0 !important;
+  padding: 0 !important;
+}
+
+li.comment .actions li { margin: 2px !important; }
+
+li.comment blockquote {
+  color: var(--text) !important;
+  line-height: 1.7 !important;
+  text-align: left !important;
+}
+
+.comment .userstuff { margin-top: 1.6em; }
+
+/* Reply/comment form */
+#add-comment-container {
+  background: var(--panel-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 1em !important;
+}
+
+
+/* ============================================
+   13. NOTICES & ALERTS
+   ============================================ */
+
+.notice, p.notice, div.notice {
+  background: #fffbea !important;
+  border: 1px solid #f0d060 !important;
+  border-left: 4px solid #d4a800 !important;
+  border-radius: var(--radius-sm) !important;
+  color: #5a4000 !important;
+  padding: 0.75em 1em !important;
+}
+
+.caution, p.caution {
+  background: #fff3e8 !important;
+  border: 1px solid #e89850 !important;
+  border-left: 4px solid #d06000 !important;
+  border-radius: var(--radius-sm) !important;
+  color: #5a2800 !important;
+}
+
+li.work.blurb .caution,
+li.work.blurb p.caution { max-width: 80% !important; }
+
+.error, p.error, div.error, ul.errors {
+  background: #fff0f0 !important;
+  border: 1px solid #e8a0a0 !important;
+  border-left: 4px solid #c82020 !important;
+  border-radius: var(--radius-sm) !important;
+  color: #7a1010 !important;
+}
+
+.success, p.success, div.success {
+  background: #f0fff0 !important;
+  border: 1px solid #90d890 !important;
+  border-left: 4px solid #208820 !important;
+  border-radius: var(--radius-sm) !important;
+  color: #104810 !important;
+}
+
+
+/* ============================================
+   14. FRONT PAGE (SPLASH)
+   ============================================ */
+
+#main.splash-page,
+div#main > div.splash,
+.splash {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 92% !important;
+  width: 92% !important;
+}
+
+/* Base card shape */
+.splash .favorite,
+.splash .news,
+.splash .module {
+  background: linear-gradient(160deg, var(--card-bg) 0%, var(--panel-bg) 50%, #f0f8f9 100%) !important;
+  border: 1px solid rgba(203,180,154,0.45) !important;
+  border-radius: var(--radius-md) !important;
+  border-top: 3px solid var(--accent-1) !important;
+  box-shadow: 0 4px 18px rgba(43,31,31,0.12) !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+/* .favorite — cream to beige card */
+.splash .favorite {
+  background: linear-gradient(160deg, var(--card-bg) 0%, var(--panel-bg) 100%) !important;
+  border: 1px solid rgba(191,70,70,0.15) !important;
+  border-top: 3px solid var(--accent-1) !important;
+}
+
+/* .news — parchment with crimson top */
+.splash .news {
+  background: linear-gradient(160deg, var(--card-bg) 0%, var(--panel-bg) 100%) !important;
+  border: 1px solid rgba(191,70,70,0.2) !important;
+  border-top: 3px solid var(--crimson) !important;
+}
+
+/* Splash summary blockquotes */
+.splash blockquote.userstuff.summary {
+  background: linear-gradient(160deg, var(--card-bg) 0%, var(--panel-bg) 100%) !important;
+  border: 1px solid rgba(203,180,154,0.25) !important;
+  border-left: 3px solid rgba(126,172,181,0.35) !important;
+  border-radius: var(--radius-sm) !important;
+  box-sizing: border-box !important;
+  color: #4a4a4a !important;
+  font-size: 1em !important;
+  line-height: inherit !important;
+  margin: 0.5em 14px !important;
+  max-width: 100% !important;
+  padding: 0.5em 0.75em !important;
+  text-align: left !important;
+}
+
+/* Section headings inside .favorite and .module cards */
+.splash .favorite h3, .splash .favorite h4,
+.splash .module h3, .splash .module h4 {
+  background: linear-gradient(90deg, var(--crimson) 0%, var(--accent-1) 100%) !important;
+  border-radius: 0 !important;
+  color: var(--text-on-dark) !important;
+  font-size: 1.2em !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  margin: 0 !important;
+  padding: 10px 60px 30px !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2) !important;
+}
+
+/* .news headings — full crimson gradient */
+.splash .news > h3,
+.splash .news > h4 {
+  background: linear-gradient(135deg, var(--crimson-dark) 0%, var(--crimson) 55%, var(--crimson-mid) 100%) !important;
+  border-radius: 0 !important;
+  color: var(--text-on-dark) !important;
+  font-size: 1em !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  margin: 0 !important;
+  padding: 10px 16px !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2) !important;
+  text-transform: uppercase !important;
+}
+
+/* Inner content padding */
+.splash .favorite ul, .splash .favorite ol, .splash .favorite p,
+.splash .news ul, .splash .news ol, .splash .news p,
+.splash .news article, .splash .news .post,
+.splash .module ol, .splash .module p {
+  padding-left: 1.2em !important;
+  padding-right: 1.2em !important;
+}
+
+.splash .module div {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.splash .module a, .splash .module a:visited {
+  color: var(--accent-1-dark) !important;
+}
+.splash .module a:hover {
+  color: var(--link-active) !important;
+  text-decoration: underline !important;
+}
+
+/* Author inside splash gradient heading — cream for readability */
+#main .splash li.blurb h4.heading a:not([rel="author"]),
+#main .splash li.blurb h4.heading a:not([rel="author"]):link,
+#main .splash li.reading.work.blurb h4.heading a:not([rel="author"]),
+#main .splash li.reading.work.blurb h4.heading a:not([rel="author"]):link {
+  color: var(--text-on-dark) !important;
+}
+
+#main .splash li.blurb h4.heading a[rel="author"],
+#main .splash li.blurb h4.heading a[rel="author"]:link,
+#main .splash li.blurb h4.heading a[rel="author"]:visited,
+#main .splash li.reading.work.blurb h4.heading a[rel="author"],
+#main .splash li.reading.work.blurb h4.heading a[rel="author"]:link,
+#main .splash li.reading.work.blurb h4.heading a[rel="author"]:visited {
+color: var(--text-on-dark) !important;
+font-style: italic !important;
+font-weight: normal !important;
+padding-left: 0 !important;
+}
+
+#main .splash li.blurb h4.heading a[rel="author"]:hover,
+#main .splash li.reading.work.blurb h4.heading a[rel="author"]:hover {
+color: var(--accent-2) !important;
+text-decoration: underline !important;
+}
+
+/* Remove underline from heading links (My Inbox, My History etc) */
+.splash .module h3 a,
+.splash .module h3 a:visited,
+.splash .module h4 a,
+.splash .module h4 a:visited,
+.splash .favorite h3 a,
+.splash .favorite h3 a:visited,
+.splash .favorite h4 a,
+.splash .favorite h4 a:visited,
+.splash .news h3 a,
+.splash .news h3 a:visited,
+.splash .news h4 a,
+.splash .news h4 a:visited {
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
+
+
+/* Splash tag overrides — beat .splash .favorite a and .splash .module a color rules */
+.splash .favorite .warning a.tag, .splash .favorite .warning a.tag:visited,
+.splash .favorite .warnings a.tag, .splash .favorite .warnings a.tag:visited,
+.splash .favorite li.warnings a, .splash .favorite li.warning a,
+.splash .module .warning a.tag, .splash .module .warning a.tag:visited,
+.splash .module .warnings a.tag, .splash .module .warnings a.tag:visited,
+.splash .module li.warnings a, .splash .module li.warning a,
+.splash .favorite .rating a.tag, .splash .favorite .rating a.tag:visited,
+.splash .module .rating a.tag, .splash .module .rating a.tag:visited {
+  background: var(--card-bg) !important;
+  border: 1px solid #cbb49a !important;
+  border-left: 4px solid #7eacb5 !important;
+  color: var(--text) !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  padding: 6px 6px 6px 6px !important;
+  text-transform: uppercase !important;
+}
+
+.splash .favorite .fandom a.tag, .splash .favorite .fandom a.tag:visited,
+.splash .favorite .fandoms a.tag, .splash .favorite .fandoms a.tag:visited,
+.splash .module .fandom a.tag, .splash .module .fandom a.tag:visited,
+.splash .module .fandoms a.tag, .splash .module .fandoms a.tag:visited {
+  background: linear-gradient(135deg, #7eacb5, #6a949d) !important;
+  color: var(--card-bg) !important;
+}
+
+.splash .favorite .character a.tag, .splash .favorite .character a.tag:visited,
+.splash .favorite .characters a.tag, .splash .favorite .characters a.tag:visited,
+.splash .module .character a.tag, .splash .module .character a.tag:visited,
+.splash .module .characters a.tag, .splash .module .characters a.tag:visited {
+  background: var(--accent-1) !important;
+  color: var(--white) !important;
+}
+
+.splash .favorite .relationship a.tag, .splash .favorite .relationship a.tag:visited,
+.splash .favorite .relationships a.tag, .splash .favorite .relationships a.tag:visited,
+.splash .module .relationship a.tag, .splash .module .relationship a.tag:visited,
+.splash .module .relationships a.tag, .splash .module .relationships a.tag:visited {
+  background: linear-gradient(135deg, #bf4646, #a33535) !important;
+  color: var(--white) !important;
+}
+
+.splash .favorite .freeform a.tag, .splash .favorite .freeform a.tag:visited,
+.splash .favorite .freeforms a.tag, .splash .favorite .freeforms a.tag:visited,
+.splash .module .freeform a.tag, .splash .module .freeform a.tag:visited,
+.splash .module .freeforms a.tag, .splash .module .freeforms a.tag:visited {
+  background: var(--panel-bg) !important;
+  border-top: 3px solid #bf4646 !important;
+  color: var(--text) !important;
+  font-size: 10px !important;
+}
+
+.splash .favorite ul { padding-top: 0.75em !important; }
+.splash .news ul,
+.splash .news article:first-child,
+.splash .news .post:first-child { padding-top: 0.75em !important; }
+
+/* Heading links inside splash cards */
+.splash .favorite h3 a, .splash .favorite h3 a:visited,
+.splash .favorite h4 a, .splash .favorite h4 a:visited,
+.splash .module h3 a, .splash .module h3 a:visited,
+.splash .module h4 a, .splash .module h4 a:visited,
+.splash .news > h3 a, .splash .news > h3 a:visited,
+.splash .news > h4 a, .splash .news > h4 a:visited {
+  color: var(--text-on-dark) !important;
+}
+
+/* Favorite list items */
+.splash .favorite li {
+  border-bottom: 1px solid rgba(126,172,181,0.35) !important;
+  padding: 7px 0 !important;
+}
+.splash .favorite li:last-child { border-bottom: none !important; }
+
+.splash .favorite a, .splash .favorite a:visited { color: var(--accent-1-dark) !important; }
+.splash .news a, .splash .news a:visited {
+  color: var(--crimson) !important;
+  padding-left: 10px;
+}
+.splash .favorite a:hover { color: var(--link-active) !important; text-decoration: underline !important; }
+.splash .news a:hover { color: var(--crimson-dark) !important; text-decoration: underline !important; }
+
+/* Favorite list item link */
+.splash .favorite li a {
+  border-left: 3px solid transparent !important;
+  border-radius: var(--radius-sm) !important;
+  display: block !important;
+  padding: 3px 8px !important;
+  transition: background 0.18s ease, padding-left 0.18s ease, color 0.18s ease !important;
+}
+
+/* Alternating rows — odd: crimson tint; even: teal tint */
+.splash .favorite li:nth-of-type(2n+1) a {
+  background: linear-gradient(90deg, #BF4646, #7EADB5) !important;
+  color: var(--white) !important;
+  margin: 5px 5px !important;
+}
+
+.splash .favorite li:nth-of-type(2n+2) a {
+  background: linear-gradient(90deg, #ECD0AD, #7EADB5) !important;
+  color: var(--white) !important;
+  margin: 5px 5px !important;
+}
+
+.splash .favorite li:nth-of-type(2n+1) a:hover,
+.splash .favorite li:nth-of-type(2n+2) a:hover {
+  background: linear-gradient(225deg, #BF4646, #7EADB5) !important;
+  color: var(--white) !important;
+  padding: 3px 8px !important;
+}
+
+/* News articles */
+.splash .news article,
+.splash .news .post {
+  border-bottom: 1px solid rgba(191,70,70,0.15) !important;
+  padding: 8px 1.2em !important;
+}
+.splash .news article:last-child,
+.splash .news .post:last-child { border-bottom: none !important; }
+
+.splash .news article h4 a,
+.splash .news .post h4 a,
+.splash .news li h4 a,
+.splash .news article h4 a:visited,
+.splash .news .post h4 a:visited,
+.splash .news li h4 a:visited {
+  background: none !important;
+  color: var(--crimson-dark) !important;
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  font-weight: 600 !important;
+}
+
+.splash .news article h4 a:hover,
+.splash .news .post h4 a:hover,
+.splash .news li h4 a:hover {
+  color: var(--accent-1-dark) !important;
+  text-decoration: underline !important;
+}
+
+/* News article byline / author */
+.splash .news article h4,
+.splash .news .post h4,
+.splash .news li h4 {
+  background: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--crimson-dark) !important;
+  padding: 0 !important;
+  text-shadow: none !important;
+  text-transform: none !important;
+}
+
+.splash .news .byline,
+.splash .news .byline a,
+.splash .news .byline a:visited {
+  color: var(--text-muted) !important;
+  font-style: italic !important;
+}
+
+.splash .news .date,
+.splash .news .posted {
+  color: var(--accent-1-mid) !important;
+  font-size: 0.85em !important;
+  font-style: italic !important;
+}
+
+/* Inbox comment actions — plain links like v1, not gradient buttons */
+.comment ul.actions a,
+.comment ul.actions a:visited {
+  background: none !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(166,52,52,0.35) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--link) !important;
+  display: inline-block !important;
+  font-size: 0.9em !important;
+  font-weight: 500 !important;
+  padding: 0.25em 0.75em !important;
+  vertical-align: middle !important;
+}
+
+.comment ul.actions a:hover {
+  background: none !important;
+  border-bottom-color: var(--accent-1-dark) !important;
+  color: var(--accent-1-dark) !important;
+}
+
+.latest.messages.module ul.actions a,
+.latest.messages.module ul.actions input[type="submit"] {
+  padding: 0.25em 0.75em !important;
+  vertical-align: middle !important;
+}
+
+/* Status badges — work with AO3's height, not against it */
+span.unread,
+.replied,
+span.claimed,
+.actions span.defaulted {
+  border-radius: 4px !important;
+  display: inline-block !important;
+  height: 1.286em !important;
+  overflow: hidden !important;
+  padding: 0.25em 0.75em !important;
+  position: relative !important;
+  text-decoration: none !important;
+  vertical-align: middle !important;
+  white-space: nowrap !important;
+  width: auto !important;
+}
+
+span.unread {
+  background: rgba(191,70,70,0.15) !important;
+  border: 1.5px solid rgba(191,70,70,0.45) !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+  color: var(--crimson-dark) !important;
+  font-size: 0.87em !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+}
+
+.replied {
+  background: rgba(126,172,181,0.15) !important;
+  border: 1px solid rgba(126,172,181,0.4) !important;
+  color: var(--accent-1-mid) !important;
+}
+
+
+.abbreviated .icon { display: none !important; }
+.abbreviated .comment h4.byline {
+  margin-bottom: 0.71em;
+  margin-left: 0px;
+  padding: 0.35em 0.16em;
+}
+
+/* Latest messages inbox item byline — strip pill, restore readable text */
+.latest.messages.module h4.heading.byline,
+.latest.messages.module h4.byline {
+  background: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--text-muted) !important;
+  font-size: 0.9em !important;
+  font-weight: normal !important;
+  padding: 0.2em 0 !important;
+  text-shadow: none !important;
+  text-transform: none !important;
+}
+
+.latest.messages.module h4.heading.byline a,
+.latest.messages.module h4.byline a {
+  background: none !important;
+  color: var(--crimson-dark) !important;
+  font-style: normal !important;
+}
+
+.latest.messages.module h4.heading.byline a:hover,
+.latest.messages.module h4.byline a:hover {
+  color: var(--accent-1-dark) !important;
+  text-decoration: underline !important;
+}
+
+
+/* ============================================
+   15. INDEX PAGES (Media, Fandoms, Collections)
+   ============================================ */
+
+ul.collection.picture.index.group {
+  list-style: none !important;
+  padding: 0 !important;
+}
+
+/* /media category grid */
+#main.media-index > h2.heading {
+  border-bottom: 3px double var(--accent-1) !important;
+  color: var(--crimson-dark) !important;
+  font-size: 1.6em !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em !important;
+  margin-bottom: 1.2em !important;
+  padding-bottom: 0.4em !important;
+  text-transform: uppercase !important;
+}
+
+#main.media-index .listbox .index {
+  background: transparent !important;
+  height: auto !important;
+}
+
+#main.media-index li.medium.listbox.group {
+  align-self: start !important;
+  background: linear-gradient(160deg, var(--card-bg) 0%, var(--panel-bg) 60%, #f0f8f9 100%) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--radius-md) !important;
+  border-top: 4px solid var(--accent-1) !important;
+  box-shadow: 0 3px 14px rgba(43,31,31,0.09) !important;
+  height: auto !important;
+  margin: 0 0.75em 2em 0.75em !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  transition: box-shadow 0.2s ease, border-top-color 0.2s ease !important;
+}
+
+#main.media-index li.medium.listbox.group:hover {
+  border-top-color: var(--crimson) !important;
+  box-shadow: 0 6px 22px rgba(43,31,31,0.15) !important;
+}
+
+#main.media-index li.medium.listbox.group h3.heading {
+  background: linear-gradient(90deg, var(--crimson) 0%, var(--accent-1) 100%) !important;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+  color: var(--text-on-dark) !important;
+  font-size: 1em !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  margin: 0 !important;
+  padding: 10px 16px !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2) !important;
+  text-transform: uppercase !important;
+}
+
+/* Fandom list rows */
+#main.media-index ol.index.group li a,
+#main.media-index ol.index.group li a:visited {
+  background: none !important;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+  color: var(--link) !important;
+  display: inline !important;
+  flex: 1 1 auto !important;
+  font-weight: 500 !important;
+  padding: 5px 14px !important;
+}
+
+#main.media-index ol.index.group li a:hover {
+  color: var(--accent-1-dark) !important;
+  text-decoration: underline !important;
+}
+
+/* Fandom list cloud (tags index) */
+ul.tags.cloud.index.group {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  list-style: none !important;
+  padding: 1em !important;
+}
+
+ul.tags.cloud.index.group li {
+  display: inline-block !important;
+  list-style: none !important;
+  margin: 3px !important;
+}
+
+ul.tags.cloud.index.group li a,
+ul.tags.cloud.index.group li a:visited {
+  background: linear-gradient(135deg, var(--card-bg) 0%, var(--panel-bg) 100%) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 4px !important;
+  color: var(--crimson-dark) !important;
+  display: inline-block !important;
+  font-weight: 600 !important;
+  max-width: 90vw !important;
+  padding: 3px 10px !important;
+  text-decoration: none !important;
+  transition: background 0.15s ease, box-shadow 0.15s ease, color 0.15s ease !important;
+  white-space: normal !important;
+}
+
+ul.tags.cloud.index.group li a:hover {
+  background: linear-gradient(135deg, var(--crimson-dark) 0%, var(--crimson) 100%) !important;
+  border-color: var(--crimson) !important;
+  box-shadow: 0 2px 8px rgba(191,70,70,0.3) !important;
+  color: var(--text-on-dark) !important;
+  text-decoration: none !important;
+}
+
+ul.tags.cloud.index.group li a.cloud8 {
+  background: linear-gradient(135deg, var(--accent-1-mid) 0%, var(--accent-1) 60%, var(--accent-1-light) 100%) !important;
+  border-color: var(--accent-1-light) !important;
+  box-shadow: 0 2px 10px rgba(126,172,181,0.25) !important;
+  color: var(--text-on-dark) !important;
+  font-size: 1.7em !important;
+  font-weight: 700 !important;
+}
+
+
+/* ============================================
+   16. PROFILE & STATS PAGES
+   ============================================ */
+
+dl.statistics.meta.group,
+.wrapper dl.meta {
+  background: var(--panel-bg) !important;
+  border: 1px solid var(--border-light) !important;
+  border-left: 4px solid var(--accent-1) !important;
+  border-radius: var(--radius-md) !important;
+  margin-bottom: 1.2em !important;
+  padding: 0.75em 1.2em !important;
+}
+
+dl.statistics.meta.group dt,
+.wrapper dl.meta dt {
+  color: var(--accent-1-mid) !important;
+  font-size: 0.82em !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+
+dl.statistics.meta.group dd,
+.wrapper dl.meta dd {
+  color: var(--text) !important;
+  font-size: 1em !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.3em !important;
+}
+
+.wrapper dl.meta dd a,
+.wrapper dl.meta dd a:visited { color: var(--text-muted) !important; font-style: italic !important; }
+.wrapper dl.meta dd a:hover { color: var(--accent-1-dark) !important; text-decoration: underline !important; }
+
+/* Stats chart */
+div#stat_chart,
+div.statistics.chart {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--radius-md) !important;
+  margin: 1em 0 !important;
+}
+
+/* Stats page — works grouped by fandom */
+ul.statistics.index.group li.fandom.listbox.group {
+  background: var(--panel-bg) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--radius-md) !important;
+  margin-bottom: 1.2em !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+ul.statistics.index.group li.fandom.listbox.group h5.heading {
+  background: var(--accent-1) !important;
+  border-radius: 0 !important;
+  color: var(--text-on-dark) !important;
+  font-size: 1.05em !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
+  padding: 6px 16px !important;
+}
+
+ul.statistics.index.group li.fandom.listbox.group ul.index.group li {
+  border-bottom: 1px solid var(--border-light) !important;
+  padding: 0.6em 1em !important;
+}
+
+.statistics .index li:nth-of-type(2n) {
+  background: rgba(126,172,181,0.08) !important;
+}
+
+
+/* ============================================
+   17. USER PROFILE
+   ============================================ */
+
+/* Strip the white box from user header */
+.user.home div.primary.header.module,
+.user.profile div.primary.header.module {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  position: relative !important;
+}
+
+div.user.home,
+div.user.profile {
+  max-width: 100% !important;
+  overflow: visible !important;
+}
+
+.user.home .wrapper,
+.user.profile .wrapper,
+.user.home .bio.module,
+.user.profile .bio.module {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Bio module */
+.user.home .bio.module,
+.user.profile .bio.module {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--accent-1) !important;
+  border-radius: var(--radius-md) !important;
+  border-top: 4px solid var(--crimson) !important;
+  box-shadow: 0 2px 10px rgba(126,172,181,0.15) !important;
+  margin-bottom: 1.2em !important;
+  padding: 1.2em 1.4em !important;
+}
+
+/* Username banner */
+.user.home h2.heading,
+.user.profile h2.heading {
+  background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-mid) 40%, var(--accent-1) 100%) !important;
+  border-bottom: none !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 0 3px 14px rgba(191,70,70,0.25) !important;
+  color: var(--text-on-dark) !important;
+  font-size: 1.8em !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 0.75em !important;
+  padding: 12px 24px 12px 100px !important;
+  text-align: right !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.25) !important;
+}
+
+/* User icon — overlaps left edge of banner */
+#main .user.home .icon,
+#main .user.profile .icon,
+#main .userpic {
+  background: var(--panel-bg) !important;
+  border: 3px solid #7eacb5 !important;
+  border-bottom: 5px solid #bf4646 !important;
+  border-radius: 6px !important;
+  box-shadow: 6px 6px 0px rgba(126,172,181,0.2), 4px 4px 12px rgba(43,31,31,0.15) !important;
+  display: block !important;
+  left: 12px !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  top: -8px !important;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease !important;
+  z-index: 2 !important;
+}
+
+#main .user.home .icon:hover,
+#main .user.profile .icon:hover,
+#main .userpic:hover {
+  border-bottom-color: var(--accent-1) !important;
+  border-color: var(--crimson) !important;
+  box-shadow: 6px 6px 0px rgba(191,70,70,0.25), 4px 4px 16px rgba(43,31,31,0.2) !important;
+}
+
+#main .user.home .icon img,
+#main .user.profile .icon img,
+#main .userpic img {
+  border-radius: 4px !important;
+  display: block !important;
+  filter: brightness(1.04) saturate(1.08) !important;
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+#main .user.home .icon a,
+#main .user.profile .icon a,
+#main .userpic a {
+  border-bottom: none !important;
+  display: block !important;
+}
+
+/* Profile metadata box */
+.user.home .wrapper,
+.user.profile .wrapper {
+  background: linear-gradient(135deg, var(--card-bg) 0%, var(--panel-bg) 100%) !important;
+  border: 1px solid var(--accent-1) !important;
+  border-left: 5px solid var(--crimson-dark) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 0 2px 10px rgba(139,38,38,0.12) !important;
+  box-sizing: border-box !important;
+  margin-bottom: 1.2em !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  padding: 1em 1.4em !important;
+}
+
+.user.home .wrapper dl.meta,
+.user.profile .wrapper dl.meta {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.user.home .wrapper dl.meta dt,
+.user.profile .wrapper dl.meta dt { color: var(--crimson-dark) !important; }
+
+.user.home .wrapper dl.meta dd,
+.user.profile .wrapper dl.meta dd { color: var(--text) !important; }
+
+.user.home .wrapper dl.meta dd a,
+.user.home .wrapper dl.meta dd a:visited,
+.user.profile .wrapper dl.meta dd a,
+.user.profile .wrapper dl.meta dd a:visited {
+  color: var(--accent-1-mid) !important;
+  font-style: italic !important;
+}
+
+.user.home .wrapper dl.meta dd a:hover,
+.user.profile .wrapper dl.meta dd a:hover {
+  color: var(--accent-1-dark) !important;
+  text-decoration: underline !important;
+}
+
+.user.home .bio.module h3.heading,
+.user.profile .bio.module h3.heading {
+  border-bottom: 1px solid rgba(126,172,181,0.3) !important;
+  color: var(--crimson-dark) !important;
+  font-size: 1.1em !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 0.75em !important;
+  padding-bottom: 0.4em !important;
+  text-transform: uppercase !important;
+}
+
+.user.home .bio.module blockquote.userstuff,
+.user.profile .bio.module blockquote.userstuff {
+  background: linear-gradient(135deg, var(--card-bg) 0%, var(--panel-bg) 100%) !important;
+  border-left: 3px solid var(--accent-1) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text) !important;
+  margin: 0 !important;
+  padding: 0.85em 1.1em !important;
+}
+
+
+/* ============================================
+   18. READING HISTORY
+   ============================================ */
+
+.reading h4.viewed {
+  background: linear-gradient(90deg, #e6f3f5 0%, var(--card-bg) 60%, var(--panel-bg) 100%) !important;
+  border-left: 5px solid var(--accent-1) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-muted) !important;
+  display: inline-block !important;
+  font-size: 0.45em !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+  padding: 3px 8px !important;
+}
+
+.reading h4.viewed a, .reading h4.viewed a:visited { color: var(--text-muted) !important; }
+.reading h4.viewed a:hover { color: var(--accent-1) !important; text-decoration: underline !important; }
+
+li.reading.work.blurb.group div.user.module.group {
+  align-items: center !important;
+  background: rgba(126,172,181,0.1) !important;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm) !important;
+  border-top: 1px solid rgba(126,172,181,0.3) !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  font-size: 0.60em !important;
+  justify-content: flex-start !important;
+  margin-top: 0.75em !important;
+  padding: 0.5em 0.75em !important;
+}
+
+/* Delete from history button */
+li.reading.work.blurb.group div.user.module.group input[type="submit"] {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: linear-gradient(135deg, #fff0f0 0%, #fde0e0 100%) !important;
+  border: 1px solid #e89898 !important;
+  border-radius: 5px !important;
+  color: #c82020 !important;
+  cursor: pointer !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  margin-left: 1em !important;
+  padding: 3px 12px 5px !important;
+}
+
+li.reading.work.blurb.group div.user.module.group input[type="submit"]:hover {
+  background: linear-gradient(135deg, #c82020 0%, #a01010 100%) !important;
+  border-color: #a01010 !important;
+  box-shadow: 0 2px 8px rgba(200,32,32,0.3) !important;
+  color: var(--text-on-dark) !important;
+}
+
+
+/* ============================================
+   19. MISCELLANEOUS
+   ============================================ */
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px !important; }
+::-webkit-scrollbar-track { background: var(--panel-bg) !important; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--crimson) 0%, var(--accent-1) 100%) !important;
+  border-radius: var(--radius-sm) !important;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--crimson-dark) !important; }
+
+/* Code and pre */
+pre, code {
+  background: linear-gradient(160deg, var(--card-bg) 0%, var(--panel-bg) 100%) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text) !important;
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Helvetica, sans-serif !important;
+  font-size: 0.9em !important;
+  padding: 2px 6px !important;
+}
+
+pre {
+  border-left: 3px solid var(--border-dark) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.07) !important;
+  line-height: 1.45 !important;
+  margin: 60px auto !important;
+  overflow-x: auto !important;
+  padding: 60px 55px !important;
+  white-space: pre-wrap !important;
+}
+
+
+/* ============================================
+   20. FOOTER
+   ============================================ */
+
+#footer,
+#footer button {
+  background: linear-gradient(to bottom, #508792 0%, #6a949d 100%) !important;
+  background-color: var(--accent-1) !important;
+  border-top: var(--border-width) solid var(--accent-1) !important;
+  color: var(--panel-bg) !important;
+  font-weight: 600 !important;
+}
+
+#footer a, #footer a:visited {
+  border-bottom: none !important;
+  color: var(--text-on-dark) !important;
+  text-decoration: none !important;
+}
+
+#footer a:hover { color: var(--accent-2) !important; }
+
+.actions li button { border-style: none !important; }
+
+#footer .menu li,
+#footer .menu li a,
+#footer .menu li a:visited {
+  font-size: 0.875em !important;
+  line-height: 1.5 !important;
+  vertical-align: baseline !important;
+}
+
+#footer .heading,
+#footer h2, #footer h3, #footer h4,
+#footer ul.navigation.actions li.module.group h4.heading {
+  background: transparent !important;
+  border-bottom: 1px solid var(--border-light) !important;
+  color: var(--text-on-dark) !important;
+}
+
+
+/* ============================================
+ * 21. REPLACE THE AO3 ICONS - default color scheme
+ * by zerafinacss https://github.com/ZerafinaCSS/Replace-the-AO3-Icons-2.0
+ * ============================================================*/
+
+ul.required-tags,
+.bookmark .status span,
+.blurb .icon {
+  opacity: 1 !important;
+}
+
+.blurb ul.required-tags li {
+  padding-left: 4px;
+  padding-top: 4px;
+}
+
+/*========== ICONS FOR USERS, COLLECTIONS, TAGS etc. ==========*/
+
+img[src$="/images/skins/iconsets/default/icon_user.png"] {
+  background:
+  #6e6e6e
+  content-box;
+  border: 1.5px solid #ddd;
+  box-sizing: border-box;
+  content: url("https://zerafinacss.github.io/ao3/icons/user-default-01.png");
+}
+
+.comment .icon .anonymous {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/anon-01.png"),
+  #6e6e6e
+  border-box;
+  background-size: cover;
+  border: 1.5px solid #00000025;
+  box-sizing: border-box;
+}
+
+.comment .icon .visitor {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/user-visitor-01.png"),
+  #6e6e6e
+  border-box;
+  background-size: cover;
+  border: 1.5px solid #00000025;
+  box-sizing: border-box;
+}
+
+img[src$="/images/skins/iconsets/default/icon_collection.png"] {
+  background:
+  linear-gradient(transparent, #ffffff50 45% 55%, transparent),
+  #bf4646
+  border-box;
+  border: 1.5px solid #00000025;
+  box-sizing: border-box;
+  content: url("https://zerafinacss.github.io/ao3/icons/collection-01.png");
+}
+
+.tagset .primary .icon,
+.tag .primary .icon,
+.index .tagset .icon {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/tag-01.png"),
+  linear-gradient(transparent, #ffffff50 45% 55%, transparent),
+  #900
+  border-box;
+  background-size: cover;
+  border: 1.5px solid #00000025;
+  box-sizing: border-box;
+}
+
+.index .mystery .icon {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/anon-01.png"),
+  linear-gradient(transparent, #ffffff50 45% 55%, transparent)
+  #616c90
+  content-box;
+  background-size: cover;
+  border: 1.5px solid #ddd;
+  box-shadow: inset 0 0 0 3px #fff;
+  box-sizing: border-box;
+}
+
+.admin .primary .icon {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/admin-01.png")
+  no-repeat,
+  linear-gradient(#ffffff40, transparent)
+  #900
+  border-box;
+  background-size: cover;
+  border: 1.5px solid #00000099;
+  box-sizing: border-box;
+}
+
+.skins .primary .icon:not(:has(a .icon)),
+.index .skins .icon:not(:has(a .icon)) {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/skins-01.png"),
+  #900
+  border-box;
+  background-size: cover;
+  border: 1.5px solid #ddd;
+  box-sizing: border-box;
+}
+
+/*>========== CONTENT SYMBOLS ==========<*/
+
+#symbols-key dl img,
+#bookmark-symbols-key img {
+  height: 0 !important;
+  padding: 25px 0 0 25px;
+  width: 0 !important;
+}
+
+.blurb ul.required-tags li a > span,
+.bookmark p.status a > span,
+#symbols-key dl img,
+#bookmark-symbols-key img {
+  background-origin: border-box;
+  background-size: cover;
+  border: 1px solid;
+  box-sizing: border-box;
+}
+
+.required-tags .rating-notrated,
+.required-tags .category-none,
+.required-tags .warning-no,
+.status .count,
+img[src$="/images/skins/iconsets/default/rating-notrated.png"],
+img[src$="/images/skins/iconsets/default/category-none.png"],
+img[src$="/images/skins/iconsets/default/warning-no.png"] {
+  background: #ffffffcc;
+  color: #00000040;
+}
+
+/*>>========== Rating ==========<<*/
+
+.required-tags .rating-general-audience,
+img[src$="/images/skins/iconsets/default/rating-general-audience.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/rating-gen-01.png"),
+  #8bc101;
+  color: #0000001a;
+}
+
+.required-tags .rating-teen,
+img[src$="/images/skins/iconsets/default/rating-teen.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/rating-teen-01.png"),
+  #f5ce00;
+  color: #0000001a;
+}
+
+.required-tags .rating-mature,
+img[src$="/images/skins/iconsets/default/rating-mature.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/rating-mature-01.png"),
+  #ef851c;
+  color: #0000001a;
+}
+
+.required-tags .rating-explicit,
+img[src$="/images/skins/iconsets/default/rating-explicit.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/rating-explicit-01.png"),
+  #b0021f;
+  color: #0000001a;
+}
+
+/*>>========== Relationships, pairings, orientations ==========<<*/
+
+.required-tags .category-femslash,
+img[src$="/images/skins/iconsets/default/category-femslash.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/category-ff-01.png"),
+  #b0021f;
+  color: #0000001a;
+}
+
+.required-tags .category-het,
+img[src$="/images/skins/iconsets/default/category-het.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/category-mf-01.png"),
+  #910679;
+  color: #0000001a;
+}
+
+.required-tags .category-gen,
+img[src$="/images/skins/iconsets/default/category-gen.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/category-gen-01.png"),
+  #8bc101;
+  color: #0000001a;
+}
+
+.required-tags .category-slash,
+img[src$="/images/skins/iconsets/default/category-slash.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/category-mm-01.png"),
+  #0054d4;
+  color: #0000001a;
+}
+
+.required-tags .category-multi,
+img[src$="/images/skins/iconsets/default/category-multi.png"] {
+  background:
+  conic-gradient(from 270deg, #8bc101 25%, #910679 25% 50%, #0054d4 50% 75%, #b0021f 75%);
+  color: #0000001a;
+}
+
+.required-tags .category-other,
+img[src$="/images/skins/iconsets/default/category-other.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/category-other-01.png"),
+  #000;
+  color: #0000001a;
+}
+
+/*>>========== Content warnings ==========<<*/
+
+.required-tags .warning-choosenotto,
+img[src$="/images/skins/iconsets/default/warning-choosenotto.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/warning-choosenotto-01.png"),
+  #ef851c;
+  color: #0000001a;
+}
+
+.required-tags .warning-yes,
+img[src$="/images/skins/iconsets/default/warning-yes.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/warning-yes-01.png"),
+  #b0021f;
+  color: #0000001a;
+}
+
+.required-tags .external-work,
+img[src$="/images/skins/iconsets/default/warning-external-work.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/warning-external-work-01.png"),
+  #107cb9;
+  color: #0000001a;
+}
+
+/*>>========== Completion status ==========<<*/
+
+.required-tags .complete-no,
+img[src$="/images/skins/iconsets/default/complete-no.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/complete-no-01.png"),
+  #b0021f;
+  color: #0000001a;
+}
+
+.required-tags .complete-yes,
+img[src$="/images/skins/iconsets/default/complete-yes.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/complete-yes-01.png"),
+  #8bc101;
+  color: #0000001a;
+}
+
+/*>>========== Bookmark symbols ==========<<*/
+
+.status .rec,
+img[src$="/images/skins/iconsets/default/bookmark-rec.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/bookmark-rec-01.png"),
+  #107cb9;
+  color: #0000001a;
+}
+
+.status .public,
+img[src$="/images/skins/iconsets/default/bookmark-public.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/bookmark-public-01.png"),
+  #107cb9;
+  color: #0000001a;
+}
+
+.status .private,
+img[src$="/images/skins/iconsets/default/bookmark-private.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/bookmark-locked-01.png"),
+  #000;
+  color: #0000001a;
+  font-size: 0;
+}
+
+.status .private .text { background: none; }
+
+.status .hidden,
+img[src$="/images/skins/iconsets/default/bookmark-hidden.png"] {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/bookmark-locked-01.png"),
+  #b0021f;
+  color: #0000001a;
+}
+
+/*>========== RSS ICON ==========<*/
+
+a.rss span {
+  background: none;
+  padding: 0;
+}
+
+.actions li a.rss {
+  align-content: center;
+  align-items: center;
+  column-gap: 0.3em;
+  display: inline-flex;
+}
+
+.actions li a.rss::before {
+  background:
+  url("https://zerafinacss.github.io/ao3/icons/rss-01.png")
+  #ef851c;
+  background-size: cover;
+  border: 1px solid var(--accent-1);
+  border-radius: 2px;
+  box-sizing: border-box;
+  content: "";
+  height: 0.85em;
+  width: 0.85em;
+}
+
+/*>========== KUDOS ICON ==========<*/
+
+p.kudos { background: none; }
+
+div:has(> p.kudos)::before {
+  background: url("https://zerafinacss.github.io/ao3/icons/kudos-01.png");
+  background-size: cover;
+  content: "";
+  filter: invert(18%) sepia(86%) saturate(2463%) hue-rotate(345deg) brightness(88%) contrast(95%);
+  height: 55px;
+  position: absolute;
+  width: 55px;
+}
+
+/*>========== LOCK ICON for restricted works ==========<*/
+
+img[src$="/images/lockblue.png"] {
+  content: url("https://zerafinacss.github.io/ao3/icons/lock-01.png");
+  filter: invert(40%) sepia(60%) saturate(800%) hue-rotate(150deg) brightness(85%) contrast(110%);
+}
