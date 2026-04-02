@@ -1816,7 +1816,6 @@ dl.inspired.index.group dd.child {
 /* Drop cap */
 #workskin .userstuff > p:first-of-type::first-letter {
   color: var(--crimson-dark);
-  float: left;
   font-family: 'Goudy Bookletter 1911', serif !important;
   font-size: 3em;
   line-height: 0.8;
