@@ -1331,7 +1331,7 @@ a.tag[href*="none_apply"] { border-left-color: var(--accent-1) !important; }
 /* Fandoms list — start below required-tags float, flush left (splash blurbs only) */
 .splash li.blurb h5.fandoms.heading {
   clear: left !important;
-  margin-left: 0 !important;
+  margin-left: 4px !important;
   padding-left: 0 !important;
 }
 
@@ -2195,14 +2195,37 @@ li.comment {
   margin: 0;
 }
 
-/* Comment icon */
+/* Comment icon — styled to match profile icons */
 .comment div.icon {
-  background: linear-gradient(180deg, var(--card-bg) 0%, #e6f3f5 100%);
-  border-bottom: 5px solid #bf4646;
-  border-radius: 6px;
+  background: var(--panel-bg) !important;
+  border: 3px solid #7eacb5 !important;
+  border-bottom: 5px solid #bf4646 !important;
+  border-radius: 6px !important;
+  box-shadow: 6px 6px 0px rgba(126,172,181,0.2), 4px 4px 12px rgba(43,31,31,0.15) !important;
   float: left;
   margin: 0.2em 0.6em inherit 0;
+  overflow: hidden !important;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease !important;
   width: 100px;
+}
+
+.comment div.icon:hover {
+  border-bottom-color: var(--accent-1) !important;
+  border-color: var(--crimson) !important;
+  box-shadow: 6px 6px 0px rgba(191,70,70,0.25), 4px 4px 16px rgba(43,31,31,0.2) !important;
+}
+
+.comment div.icon img {
+  border-radius: 4px !important;
+  display: block !important;
+  filter: brightness(1.04) saturate(1.08) !important;
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+.comment div.icon a {
+  border-bottom: none !important;
+  display: block !important;
 }
 
 /* Comment byline */
@@ -2211,45 +2234,32 @@ li.comment {
   border-bottom: 1px solid var(--accent-1);
   color: var(--crimson-dark);
   margin-bottom: -0.90em;
-  margin-left: 100px;
+  margin-left: 110px;
   padding: 0.35em 0.16em;
   text-shadow: 0 1px 0 rgba(255,244,234,0.6);
 }
 
 /* Comment action buttons */
-li.comment .actions a,
-li.comment .actions a:visited {
+li.comment ul.actions a,
+li.comment ul.actions a:visited {
   background: linear-gradient(to bottom, var(--crimson) 0%, var(--crimson-mid) 100%) !important;
-  border: none !important;
+  border: 1px solid var(--accent-2) !important;
+  border-bottom: none !important;
   border-radius: var(--radius-sm) !important;
   color: var(--text-on-dark) !important;
   display: inline-block !important;
   font-size: 0.8em !important;
   font-weight: 600 !important;
-  margin: 2px !important;
   padding: 3px 10px !important;
   text-decoration: none !important;
 }
 
-li.comment .actions a:hover {
+li.comment ul.actions a:hover,
+li.comment ul.actions a:focus {
   background: var(--accent-1) !important;
+  border-color: var(--accent-2) !important;
   color: var(--text-on-dark) !important;
-}
-
-li.comment .actions {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  list-style: none !important;
-  margin: 0.5em 0 0 0 !important;
-  padding: 0 !important;
-}
-
-li.comment .actions li { margin: 2px !important; }
-
-li.comment blockquote {
-  color: var(--text) !important;
-  line-height: 1.7 !important;
-  text-align: left !important;
+  text-decoration: none !important;
 }
 
 .comment .userstuff { margin-top: 1.6em; }
